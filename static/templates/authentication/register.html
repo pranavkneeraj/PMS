@@ -1,0 +1,126 @@
+<div class="modal-header">
+   <h3 class="modal-title">Edit Details</h3>
+</div>
+<div class="container modal-body" id="registration">
+    <div id="success_alert" class="alert alert-success" ng-show="vm.success_msg">
+        <p class="text-center">{{ vm.success_msg }}</p>
+    </div>
+    <div  class="alert alert-danger" ng-show="vm.error_msg">
+        <p class="text-center">{{ vm.error_msg }}</p>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading"> <strong class="">Registration {{vm.submitInProgress}}</strong>
+                </div>
+                <div class="panel-body">
+                    <form name="UserRegistration" class="form-horizontal" role="form"  ng-submit="UserRegistration.$valid && vm.register() || vm.edit()" novalidate>
+                        <fieldset ng-disabled="vm.submitInProgress">
+                        <div id="UserRegistrationForm" class="form-group" ng-if="vm.isJicaStudent">
+                            <label for="" class="col-sm-3 control-label">Roll No.</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control"  placeholder="Roll Number" name="roll_no" required ng-model="vm.student.roll_no">
+                                <div ng-show="UserRegistration.$submitted || UserRegistration.$touched">
+                                    <div ng-show="UserRegistration.roll_no.$error.required" class="text-danger">Tell us your Roll number</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">First Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="first_name" class="form-control" placeholder="First Name" required="" ng-model="vm.student.first_name">
+                                <div ng-show="UserRegistration.$submitted || UserRegistration.$touched">
+                                    <div ng-show="UserRegistration.first_name.$error.required" class="text-danger">Tell us your first Name</div>
+                                </div>
+                            </div>
+                        </div>
+			<div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Middle Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="middle_name" class="form-control" placeholder="Middle Name" required="" ng-model="vm.student.middle_name">
+                                <div ng-show="UserRegistration.$submitted || UserRegistration.$touched">
+                                    <div ng-show="UserRegistration.middle_name.$error.required" class="text-danger">Tell us your first Name</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-sm-3 control-label">Last Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="last_name" placeholder="Last Name" required="" ng-model="vm.student.last_name">
+                                <div ng-show="UserRegistration.$submitted || UserRegistration.$touched">
+                                    <div ng-show="UserRegistration.last_name.$error.required" class="text-danger">Tell us your last name</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Email</label>
+                            <div class="col-sm-9">
+                                <input type="email" class="form-control" name="email" placeholder="Email" required="" ng-model="vm.student.email">
+                                <div ng-show="UserRegistration.$submitted || UserRegistration.$touched">
+                                      <div ng-show="UserRegistration.email.$error.required" class="text-danger">Tell us your email</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-sm-3 control-label">Phone</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="contact" placeholder="Phone number" required="" ng-model="vm.student.contact">
+                                <div ng-show="UserRegistration.$submitted || UserRegistration.$touched">
+                                    <div ng-show="UserRegistration.contact.$error.required" class="text-danger">Tell us your phone number</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-sm-3 control-label">Address</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" name="address" placeholder="Adderess" required="" ng-model="vm.student.address"></textarea>
+                                <div ng-show="UserRegistration.$submitted || UserRegistration.$touched">
+                                    <div ng-show="UserRegistration.address.$error.required" class="text-danger">Tell us your address</div>
+                                </div>
+                            </div>
+                        </div>
+			<span ng-if="!vm.isEditForm">
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
+                            <div class="col-sm-9">
+                                <input type="password" class="form-control" name="password" placeholder="Password" required="" ng-model="vm.student.password">
+                                <div ng-show="UserRegistration.$submitted || UserRegistration.$touched">
+                                    <div ng-show="UserRegistration.password.$error.required" class="text-danger">Please set your password</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-3 control-label">Confirm Password</label>
+                            <div class="col-sm-9">
+                                <input type="password" class="form-control" id="" placeholder="Confirm Password" required  ng-model="vm.student.cnf_password">
+                                <div>
+                                    <div ng-show="vm.student.password!=vm.student.cnf_password && vm.student.cnf_password!=null" class="text-danger">Password does not match</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" ng-if="!vm.isJicaStudent">
+                            <label  class="col-sm-3 control-label">Code</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control"  name="unique_code" placeholder="Unique code for registration" required="" ng-model="vm.student.unique_code" pattern="[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}">
+                                <div ng-show="UserRegistration.$submitted || UserRegistration.$touched">
+                                    <div ng-show="UserRegistration.unique_code.$error.required" class="text-danger">Tell us your registration_code</div>
+                                    <div ng-show="UserRegistration.unique_code.$error.pattern" class="text-danger">Registration code is not valid</div>
+                                </div>
+                            </div>
+                        </div>
+			</span>
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-9">
+                                <button ng-if="!vm.isEditForm" type="submit" class="btn btn-success btn-md">Save & Next</button>
+                                <button ng-if="vm.isEditForm"type="submit" class="btn btn-success btn-md">Update</button>
+                                <button type="reset" class="btn btn-default btn-md">Reset</button>
+                            </div>
+                        </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

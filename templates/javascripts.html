@@ -1,0 +1,47 @@
+{% load compress %}
+{% load staticfiles %}
+
+{% compress js %}
+<script src="{% static 'layout/scripts/jquery.min.js' %}"></script>
+<script src="{% static 'layout/scripts/jquery.fitvids.min.js' %}"></script>
+<script src="{% static 'layout/scripts/jquery.mobilemenu.js' %}"></script>
+<script src="{% static 'layout/scripts/tabslet/jquery.tabslet.min.js' %}"></script>
+<script src="{% static 'bower_components/angular/angular.min.js' %}"></script>
+<script src="{% static 'bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+
+<script src="{% static 'bower_components/angular-route/angular-route.min.js' %}"></script>
+<script src="{% static 'bower_components/angular-ui-router/release/angular-ui-router.min.js' %}"></script>
+
+<script src="{% static 'bower_components/angular-cookies/angular-cookies.min.js' %}"></script>
+<script src="{% static 'bower_components/angular-resource/angular-resource.min.js' %}"></script>
+<script src="{% static 'bower_components/ng-file-upload/ng-file-upload.min.js' %}"></script>
+<script src="{% static 'bower_components/ng-file-upload/ng-file-upload-shim.min.js' %}"></script>
+
+<script src="{% static 'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js' %}"></script>
+
+<script src="{% static 'javascripts/placement.js' %}"></script>
+<script src="{% static 'javascripts/placement.config.js' %}"></script>
+<script src="{% static 'javascripts/placement.directives.js' %}"></script>
+
+<script src="{% static 'javascripts/accounts/accounts.module.js' %}"></script>
+<script src="{% static 'javascripts/accounts/services/account.userService.js' %}"></script>
+<script src="{% static 'javascripts/accounts/controllers/academicdetail.controller.js' %}"></script>
+<script src="{% static 'javascripts/accounts/controllers/academicdetail.pg.controller.js' %}"></script>
+<script src="{% static 'javascripts/accounts/controllers/edit.personalDetail.controller.js' %}"></script>
+<script src="{% static 'javascripts/accounts/controllers/edit.academicDetail.controller.js' %}"></script>
+<script src="{% static 'javascripts/accounts/controllers/edit.pgDetail.controller.js' %}"></script>
+
+<script src="{% static 'javascripts/authentication/authentication.module.js' %}"></script>
+<script src="{% static 'javascripts/authentication/services/authentication.service.js' %}"></script>
+<script src="{% static 'javascripts/authentication/controllers/login.controller.js' %}"></script>
+<script src="{% static 'javascripts/authentication/controllers/register.controller.js' %}"></script>
+<script src="{% static 'javascripts/layout/layout.module.js' %}"></script>
+<script src="{% static 'javascripts/layout/services/layout.service.js' %}"></script>
+<script src="{% static 'javascripts/layout/controllers/index.controller.js' %}"></script>
+<script src="{% static 'javascripts/layout/controllers/studentDataController.js' %}"></script>
+<script src="{% static 'javascripts/layout/controllers/createStudentByExcel.controller.js' %}"></script>
+<script src="{% static 'javascripts/layout/controllers/listStudentController.js' %}"></script>
+
+<script src="{% static 'javascripts/placement.routes.js' %}"></script>
+
+{% endcompress %}

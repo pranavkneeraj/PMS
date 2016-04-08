@@ -1,0 +1,47 @@
+<div id="success_alert" class="alert alert-success" ng-show="vm.success_msg">
+    <p class="text-center">{{ vm.success_msg }}</p>
+</div>
+<div class="">
+    <h1 class="text-center h1">Add Student</h1>
+    <form class="form-horizontal" ng-submit="vm.createFields()">
+        <div class="form-group">
+            <label class="control-label col-xs-3" for="inputEmail">Enter no of  student:</label>
+            <div class="col-xs-3">
+                <input type="number" class="form-control" id="inputEmail" placeholder="Number of student" ng-model="vm.NoOfStudent">
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <div class="col-xs-offset-3 col-xs-9">
+                <input type="submit" class="btn btn-primary" value="Submit">
+                <input type="reset" class="btn btn-default" value="Reset">
+            </div>
+        </div>
+    </form>
+</div>
+<div class="bs-example" ng-if="vm.showFields">
+    <form   ng-submit="vm.addStudents()">
+        <fieldset ng-disabled="vm.submitInProgress">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Roll Number</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="student in vm.student_list">
+                <td><input type="text" placeholder="Roll Number" class="form-control" ng-model="student.roll_no" required/></td>
+                <td><input type="text" placeholder="FirstName" class="form-control" ng-model="student.first_name" required/></td>
+                <td><input type="text" placeholder="Last Name" class="form-control" ng-model="student.last_name" required/></td>
+                <td><input type="email" placeholder="Email" class="form-control" ng-model="student.email" required/></td>
+            </tr>
+        </tbody>
+        </fieldset>
+        </form>
+    </table>
+    <input type="submit" class="btn btn-primary has-spinner active" value="Add Students">
+        </form>
+</div>

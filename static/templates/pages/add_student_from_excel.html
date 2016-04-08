@@ -1,0 +1,44 @@
+<<div class="">
+    <h1 class="text-center h1">Add Student From Excel</h1>
+    <form class="form-horizontal" ng-submit="vm.uploadExcelFile(file)">
+        <div class="form-group">
+            <label class="control-label col-xs-5" for="inputEmail">Upload Excel File:</label>
+            <div class="col-xs-3">
+                <input type="file" ngf-select ng-model="file" name="file"
+                        ngf-max-size="2MB" required
+                       ngf-model-invalid="errorFile" class="form-control">
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <div class="col-xs-offset-4 col-xs-9">
+                <input type="submit" class="btn btn-primary" value="Submit">
+                <input type="reset" class="btn btn-default" value="Reset">
+            </div>
+        </div>
+    </form>
+</div>
+<div id="success_alert" class="alert alert-success" ng-show="vm.success_msg">
+    <table id="mytable" class="table table-bordred table-striped">
+        <caption class="text-center">List of student with  falied to add</caption>
+        <thead>
+            <th>First Namejhj</th>
+            <th>email</th>
+            <th>Reason</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="user in vm.success_msg.failed_students_data">
+                <td>{{ user.first_name }}</td>
+                <td>{{ user.email }}</td>
+                <td ng-hide="user.reason.email[0]=='This field must be unique.'">{{ user.reason}}</td>
+                <td ng-show="user.reason.email[0]=='This field must be unique.'">User wiith this email already exists</td>
+            </tr>
+            <tr>
+                <td  rowspan="5">Total Added = {{vm.success_msg.total_added}}</td>
+                <td>Total Failed to add = {{vm.success_msg.total_faied_to_add}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+
+</div>

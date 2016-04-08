@@ -1,0 +1,134 @@
+<div class="module-heading" id="scrolltotop">
+    <div class="heading-text" ng-show="showBookingFields">
+        <strong> Book Your Media Visit </strong>
+    </div>
+    <div class="heading-text" ng-hide="showBookingFields">
+        <strong> Confirm Property Details </strong>
+    </div>
+</div>
+{% endblock %}
+
+{% block modal_lvl_1 %}
+
+{% endblock %}
+
+{% block modal_body %}
+{% verbatim %}
+
+<form name="bookAssessorForm"
+    class="form-horizontal assessor-booking"
+    role="form">
+
+    <div class="alert alert-info" ng-if="empty_msg">
+            {{empty_msg}}
+    </div>
+    <div class="alert alert-danger" ng-if="error_msg">
+            {{error_msg}}
+    </div>
+    <div class="alert alert-success" ng-if="success_msg">
+            {{success_msg}}
+    </div>
+<div ng-if="loading" class="alert inline-loader-container">
+    <span class="processing-spinner-inline"></span>
+    <span>{{loading.msg}}</span>
+</div>
+</form>
+<form name="createOrderForm" class="form-horizontal assessor-booking" role="form" ng-hide="showBookingFields" ng-disabled="submitInProgress">
+    <span ng-hide="showBookingFields" ng-disabled="submitInProgress">
+	{% endverbatim %}
+        {% include "modules/form_property_address.html" with formName="createOrderForm" formErrors="propertyAddressErrors" formModel="booking" propertyType="Property Address" %}
+	{% verbatim %}
+    </span>
+</form>
+<fieldset class="bordered-fieldset" ng-hide="showBookingFields">
+    <div class="row">
+        <div class="col-xs-12 col-md-6 pull-right">
+            <div class="col-xs-6 left-button-container">
+                <button ng-click="skipBooking()" class="button btn-form-control-aligned btn-block" ng-show="!success_msg && !dashboardData.assessorOrder.skipped_on" ng-disabled="submitInProgress">
+                    Cancel
+                </button>
+            </div>
+	    <div processing-spinner
+             ng-show="submitInProgress">
+	    </div>
+            <div class="col-xs-6 right-button-container" ng-hide="showBookingFields">
+                <button type="submit"
+                class="button button-submit btn-form-control-aligned btn-block" ng-click="createOrder()" ng-disabled="submitInProgress || createOrderForm.$invalid">
+                    Next
+                </button>
+            </div>
+        </div>
+    </div>
+</fieldset>
+
+<form name="bookAssessorForm" class="form-horizontal assessor-booking" role="form" ng-show="showBookingFields && !assessorOrder.is_emoov">
+    <fieldset class="bordered-fieldset">
+        <div class="form-group row col-xs-12" ng-show="showBookingFields && !assessorOrder.is_emoov">
+            <label for="Available time">Available time</label><sup>*</sup>
+            <div class="">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <p class="input-group assessor-datepicker">
+                                <input class="form-control" ng-focus="open($event)" uib-datepicker-popup="dd MMMM yyyy"
+                                ng-model="selectedDate" is-open="status.opened" datepicker-options="dateOptions"
+                                date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"
+                                custom-class="getDayClass(date, mode)" show-weeks='false' show-button-bar="false"
+                                ng-change="updateDate()" readonly="readonly"/>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="open($event)">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                    </button>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="select-wrapper">
+                                <select ng-model="booking.slot" class="form-control" ng-options="slot.optionDisplay for slot in slots"></select>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="form-group row col-xs-12" ng-class="{ 'has-error': errors.property_bedrooms }" >
+            <label>Special Instructions</label>
+            <div>
+                <textarea maxlength="1000" ng-trim="false" ng-model="booking.instruction"
+                class="form-control" rows="3" id="comment" placeholder="Please use the buzzer to let us know you are here">
+                </textarea>
+                <div class="form-help">
+                    {{1000-booking.instruction.length}} characters left
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row col-xs-12">
+            <input type="checkbox" class="termsbox" required ng-model="booking.terms" value="true"/>
+            <p for="terms"> I understand that I can cancel my booking until 17:00 the day before the visit, after which there may be a charge. Please call 0333 121 4950 for clarification.</p>
+            <p ng-show="!booking.terms" class="form-help terms">
+                Please accept the terms before submitting your booking.
+            </p>
+        </div>
+	</span>
+    </fieldset>
+</form>
+
+<fieldset class="bordered-fieldset" ng-show="showBookingFields && !assessorOrder.is_emoov">
+    <div class="row">
+        <div class="col-xs-12 col-md-6 pull-right">
+            <div class="col-xs-6 left-button-container">
+		        <input type="button" value="Back" ng-click="backToPropertyDatails()" class="button btn-form-control-aligned btn-block" ng-disabled="loading">
+                </input>
+            </div>
+            <div class="col-xs-6 right-button-container">
+                <input ng-disabled="loading || (!booking.slot || !booking.terms || success_msg)" type="submit"
+                class="button button-submit btn-form-control-aligned btn-block" ng-click="book()" value="Book Now">
+                </input>
+            </div>
+        </div>
+    </div>
+</fieldset>
+
+
+
+{% endverbatim %}
+{% endblock %}
