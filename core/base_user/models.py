@@ -4,7 +4,7 @@ Module for AbstractEmailUser
 from django.db import models
 from django.utils import timezone
 from django.core.mail import send_mail
-from django.contrib.auth.models import Group
+#from django.contrib.auth.models import Group
 from django.contrib.auth.models import (
     AbstractBaseUser, PermissionsMixin, BaseUserManager
 )
@@ -79,6 +79,7 @@ class AbstractEmailUser(AbstractBaseUser, PermissionsMixin):
         Sends an email to this User.
         """
         send_mail(subject, message, from_email, [self.email], **kwargs)
+'''
 class ProxyGroup(Group):
 
         """
@@ -89,3 +90,4 @@ class ProxyGroup(Group):
             proxy = True
             verbose_name = _('Group')
             verbose_name_plural = _('Groups')
+'''

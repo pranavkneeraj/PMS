@@ -1,0 +1,10 @@
+<div class="modal-header">
+    <h3 class="modal-title text-center">{{vm.page_title}}</h3>
+    <a href="#"><div class="glyphicon glyphicon-remove pull-right" ng-click="vm.close()"></div></a>
+</div>
+<div class="modal-body">
+    <div ng-include="vm.alert_page">
+    </div>
+    <div ng-include="vm.form_page" ng-hide="vm.academic_detail_not_found">
+    </div>
+</div>

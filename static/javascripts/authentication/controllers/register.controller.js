@@ -5,6 +5,7 @@
 (function () {
   'use strict';
 
+
   angular
     .module('pms.authentication.controllers')
     .controller('RegisterController', RegisterController);
@@ -16,6 +17,8 @@
    */
     function RegisterController($location, $scope, $state, UserService, student) {
         var vm = this;
+        vm.alert_page = "static/templates/common/alert.html";
+        vm.form_page = "static/templates/common/personal_detail_form.html";
         vm.submitInProgress = false;
         vm.student = {};
         if(student){

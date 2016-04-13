@@ -63,7 +63,7 @@ class AddUsersAPI(views.APIView):
             for row_index in range(1,sheet.nrows):
                 user = {}
                 if(sheet.cell(row_index,0).value and sheet.cell(row_index,3).value):
-                    user['roll_no'] = ''
+                    #user['roll_no'] = ''
                     user['first_name'] = sheet.cell(row_index,0).value
                     user['middle_name'] = sheet.cell(row_index,1).value
                     user['last_name'] = sheet.cell(row_index,2).value

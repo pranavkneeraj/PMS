@@ -17,15 +17,14 @@ class User(AbstractEmailUser, BaseModel):
     This model User holds the
     information about the registering User
     """
-    roll_no = models.CharField(
-        max_length=200,
+    roll_no = models.IntegerField(
         blank=True,
         null=True
         )
-    middle_name = models.TextField(
+    middle_name = models.CharField(
         max_length=100,
         blank = True,
-	null=True
+        null=True
         )
     address = models.TextField(
         max_length=500,
@@ -36,11 +35,14 @@ class User(AbstractEmailUser, BaseModel):
         blank = True
         )
 
-    contact = models.CharField(
+    contact = models.IntegerField(
         validators=[RegexValidator(
             regex='^[0-9]{10}$',
             message='Length has to be 10',
-            code='nomatch')], max_length=10)
+            code='nomatch')],
+            null=True,
+            blank=True
+)
 
 
 class UniqueRegistration(CreatedFlagModelMixin,
@@ -53,12 +55,3 @@ class UniqueRegistration(CreatedFlagModelMixin,
     valid_from = models.DateTimeField(default=datetime.now, blank=True)
     valid_to = models.DateTimeField(default=datetime.now, blank=True)
     user = models.ForeignKey(User, null=True)
-
-from academic.models import CampusDrive
-
-class Interested(CreatedFlagModelMixin,
-                         UpdatedFlagModelMixin,
-                         DeletedFlagModelMixin,
-                         models.Model):
-    student = models.ForeignKey(CampusDrive)
-    is_interested = models.BooleanField(default=False)

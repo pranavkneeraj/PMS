@@ -16,6 +16,8 @@
    */
     function AcademicDetailController($location, $scope, $state, $stateParams, UserService) {
         var vm = this;
+        vm.alert_page = "static/templates/common/alert.html";
+        vm.form_page = "static/templates/common/academic_detail_form.html";
         vm.studentAcademicDetail = {};
         vm.success_msg = "Your personal details are saved.";
         vm.error_msg = "";

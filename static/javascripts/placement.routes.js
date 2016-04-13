@@ -49,28 +49,23 @@
             })
             .state('edit_personal_detail', {
                 url: '/edit/personal_detail',
-                controller: 'EditPersonalDetailController',
+                controller: 'EditPersonalDetailByUserController',
                 controllerAs: 'vm',
                 templateUrl: '/static/templates/authentication/register.html'
             })
             .state('edit_academic_detail', {
                 url: 'edit/academic_detail',
                 templateUrl: '/static/templates/authentication/add_academic_detail.html',
-                controller:'EditAcademicDetailController',
+                controller:'EditAcademicDetailByUserController',
                 controllerAs:'vm',
                 params :{
                     student:null
-                },
-                resolve: {
-                    academic_detail: function(){
-                        return null;
-                    }
                 }
             })
             .state('edit_pg_detail', {
                 url: 'edit/academic_detail/pg_detail',
                 templateUrl: '/static/templates/accounts/pg_detail.html ',
-                controller:'EditPGDetailController',
+                controller:'EditPGDetailByUserController',
                 controllerAs:'vm',
                 resolve: {
                     academicDetail: function(){
@@ -111,6 +106,19 @@
                 controller: 'addStudentByExcelController',
                 controllerAs: 'vm',
             })
+            .state('add_campus_drive', {
+                url: '/add_campus_drive',
+                templateUrl: '/static/templates/pages/add_campus_drive.html',
+                controller: 'addCampusDriveController',
+                controllerAs: 'vm'
+            })
+            .state('list_campus_drive', {
+                url: '/list_campus_drive',
+                templateUrl: '/static/templates/pages/list_campus_drive.html',
+                controller: 'campusDriveListController',
+                controllerAs: 'vm'
+            })
+
             .state('list_students', {
                 url: '/list_student',
                 controller: 'studentListController',

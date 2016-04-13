@@ -16,8 +16,9 @@
 
     function addStudentByExcelController($scope, Upload, $location, $anchorScroll) {
         var vm = this;
+        $anchorScroll('content-area');
         vm.data= "sdad";
-
+        console.log("Inside personal detail edit controller");
         vm.submitInProgress = false;
         vm.uploadExcelFile = function(file) {
             file.upload = Upload.upload({

@@ -8,25 +8,55 @@
     angular
         .module('pms.layout.controllers')
         .controller('IndexController', IndexController)
-        .controller('NotificationController', NotificationController);
-
+        .controller('NotificationController', NotificationController)
+        .controller('alertModalController', alertModalController);
     IndexController.$inject = ['$scope', '$location', '$cookies', 'UserService', 'Authentication'];
 
     NotificationController.$inject = ['$scope', '$location', '$cookies', 'LayoutService'];
+
+    alertModalController.$inject = ['$uibModalInstance', 'msg'];
 
     /**
      * @namespace IndexController
      */
     function IndexController($scope, $location, $cookies, UserService, Authentication) {
+
         var vm = this;
         var user = $cookies.getObject('user');
         var activate = function () {
             if (user) {
                 UserService.user = user ;
                 UserService.isLogin = true;
-                $location.path('/');
+//                $location.path('/');
             }
         };
+        $scope.myInterval = 3000;
+
+        $scope.noWrapSlides = false;
+
+        $scope.active = 0;
+
+        var slides = $scope.slides = [];
+
+        var currIndex = 0;
+        slides.push({
+
+            image: 'static/images/j.jpg',
+
+            text: ['Nice image','Awesome photograph','That is so cool','I love that'][slides.length % 4],
+
+            id: currIndex++
+
+        });
+        slides.push({
+
+            image: 'static/images/JICA-2.jpg',
+
+            text: ['Nice image','Awesome photograph','That is so cool','I love that'][slides.length % 4],
+
+            id: currIndex++
+
+        });
         activate();
         vm.UserService = UserService;
         $scope.isLogin = UserService.isLogin;
@@ -52,6 +82,21 @@
         });
         vm.pageChanged = function(){
             console.log("asds");
+        };
+    }
+
+    function alertModalController($uibModalInstance, msg) {
+        console.log("alert")
+        var vm = this;
+        vm.msg = msg;
+        vm.close = function(){
+            console.log("close")
+            $uibModalInstance.close();
+        };
+        vm.dismiss = function(){
+            console.log("close")
+
+            $uibModalInstance.dismiss();
         };
     }
 

@@ -1,0 +1,13 @@
+<div class="modal-header">
+    <a href="#"><div class="glyphicon glyphicon-remove pull-right" ng-click="vm.dismiss()"></div></a>
+    <h3 class="modal-title text-center">{{vm.page_title}}</h3>
+</div>
+<div class="modal-body">
+<div class="alert alert-info">
+{{vm.msg}}
+</div>
+</div>
+<div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="vm.close()">Yes</button>
+            <button class="btn btn-warning" type="button" ng-click="vm.dismiss()">No</button>
+</div>

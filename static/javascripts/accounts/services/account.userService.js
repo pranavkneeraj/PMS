@@ -19,7 +19,7 @@
      */
       var addListApi = $resource('api/user/add_users/', {id: '@data.id'});
       var api = $resource('api/user/user/:id/', {id: '@data.id'}, {
-          'update': { method:'PATCH' },
+          'update': { method:'PATCH' }
       });
       var codeApi = $resource('api/user/user/registration/code/:code/', {id: '@data.code'}, {
           'update': { method:'PATCH' }
@@ -30,9 +30,18 @@
       var pgDetailApi = $resource('api/academic/pgsem/:id/', {id: '@data.id'}, {
           'update': { method:'PATCH' }
       });
+      var campusDriveApi = $resource('api/academic/campusdrive/:id/', {id: '@data.id'}, {
+          'update': { method:'PATCH' }
+      });
+
+      var specialCriteriaApi = $resource('api/academic/special_criteria/:id/', {id: '@data.id'}, {
+          'update': { method:'PATCH' }
+      });
+
       var uploadExcelFile = $resource('api/academic/pgsem/:id/', {id: '@data.id'}, {
           'update': { method:'PATCH' }
       });
+
       var userService = {
           isLogin: false,
           user: '',
@@ -40,7 +49,10 @@
           api:api,
           codeApi:codeApi,
           academicDetailApi:academicDetailApi,
-          pgDetailApi:pgDetailApi
+          pgDetailApi:pgDetailApi,
+          campusDriveApi:campusDriveApi,
+          specialCriteriaApi:specialCriteriaApi
+
           //uploadExcelFile:uploadExcelFile
       };
       return userService;

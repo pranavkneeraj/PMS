@@ -9,6 +9,8 @@ router = routers.DefaultRouter()  # pylint: disable=C0103
 router.register(r'detail', views.AcademicDetailViewSet)
 router.register(r'campusdrive', views.CampusDriveViewSet)
 router.register(r'pgsem', views.PGSemViewSet, base_name='academic-pgsem')
+router.register(r'special_criteria', views.SpecialCriteriaViewSet)
+router.register(r'interested', views.InterestedViewSet)
 
 urlpatterns = [
     url(r'', include(router.urls)),

@@ -1,0 +1,42 @@
+<form name="PGDetail" class="form-horizontal" role="form" ng-submit="PGDetail.$valid &&
+                                                                                         vm.add_pg_detail() || vm.edit()"novalidate>
+                        <fieldset ng-disabled="vm.submitInProgress">
+                            <fieldset class="scheduler-border" ng-repeat="x in vm.pgSemDetail track by $index">
+                                <legend class="scheduler-border">Sem {{$index+1}}</legend>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-3 control-label">Marks</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" placeholder="Total marks" name="marks" required ng-model="vm.pgSemDetail[$index].marks">
+                                        <div ng-show="PGDetail.$submitted || PGdetail.$touched">
+                                            <div ng-show="PGdetail.hsc_marks.$error.required" class="text-danger">Tell us your PG Sem Marks</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-3 control-label">Percentage</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="pg_percentage"class="form-control" placeholder="Percentage" required ng-model="vm.pgSemDetail[$index].percentage">
+                                        <div ng-show="PGdetail.$submitted || PGdetail.$touched">
+                                            <div ng-show="PGdetail.hsc_percentage.$error.required" class="text-danger">Tell us your PG Sem Percentage</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-3 control-label">Number Of Backlogs</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="no_of_backlogs"class="form-control" placeholder="Number of backlogs" required="" ng-model="vm.pgSemDetail[$index].no_of_backlogs">
+                                        <div ng-show="PGdetail.$submitted || PGdetail.$touched">
+                                            <div ng-show="PGdetail.no_of_backlogs.$error.required" class="text-danger">Tell us your Number of bacKlogs</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-9">
+                                <button ng-if="vm.isEditForm" type="submit" class="btn btn-success btn-md">Update</button>
+                                <button type="submit" ng-if="!vm.isEditForm"class="btn btn-success btn-md">Save</button>
+                                <button type="reset" class="btn btn-default btn-md">Reset</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>

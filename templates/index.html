@@ -1,85 +1,85 @@
 <!--
-<!DOCTYPE html>
-Template Name: Academic Education V2
-Author: <a href="http://www.os-templates.com/">OS Templates</a>
-Author URI: http://www.os-templates.com/
-Licence: Free to use under our free template licence terms
-Licence URI: http://www.os-templates.com/template-terms
--->
+      <!DOCTYPE html>
+      Template Name: Academic Education V2
+      Author: <a href="http://www.os-templates.com/">OS Templates</a>
+      Author URI: http://www.os-templates.com/
+      Licence: Free to use under our free template licence terms
+      Licence URI: http://www.os-templates.com/template-terms
+      -->
 <html ng-app="placement">
-<head>
-    <title>Demo Application</title>
-    <base href="/" />
-{% load staticfiles %}
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <head>
+        <title>JSPM's JPMS</title>
+        <base href="/" />
+        {% load staticfiles %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-{% include 'stylesheets.html' %}
-</head>
-<body id="top" ng-controller="IndexController as vm">
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<div class="wrapper row0">
-  <div id="topbar" class="clear">
-    <!-- ################################################################################################ -->
-    <nav ng-show="!vm.UserService.isLogin">
-      <ul>
-        <li><a ui-sref="login">Login</a></li>
-        <li><a ui-sref="register_not_jica">Register</a></li>
-      </ul>
-    </nav>
-    <!-- ################################################################################################ -->
-  </div>
-</div>
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<div class="wrapper row1">
-  <header id="header" class="clear">
-    <!-- ################################################################################################ -->
-    <div id="logo" class="fl_left">
-      <h1><a href="/">Demo Application</a></h1>
-      <p>For Demo</p>
-    </div>
-    <div class="fl_right" ng-show="vm.UserService.isLogin">
-      <nav id="mainav" class="clear">
+        {% include 'stylesheets.html' %}
+    </head>
+    <body id="top" ng-controller="IndexController as vm">
+      <div class="wrapper row0">
+        <div id="topbar" class="clear">
+          <!-- ################################################################################################ -->
+          <nav ng-show="!vm.UserService.isLogin">
+            <ul>
+              <li><a ui-sref="login">Login</a></li>
+              <li><a ui-sref="register_not_jica">Register</a></li>
+            </ul>
+          </nav>
+          <!-- ################################################################################################ -->
+        </div>
+      </div>
       <!-- ################################################################################################ -->
-      <ul class="clear">
-        <li><a class="glyphicon glyphicon-user" style="font-size: 25px"href="#"></a>
-        {% verbatim %}
-        welcome {{vm.UserService.user.first_name}}
-        {% endverbatim %}
-          <ul>
-            <li><a href="pages/settings.html">Setting</a></li>
-            <li><a href="#" ng-click="vm.logout()">Logout</a></li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-    </div>
-
-    <!-- ################################################################################################ -->
-  </header>
-</div>
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<div class="wrapper row2">
-  <div class="rounded">
-    <nav id="mainav" class="clear">
       <!-- ################################################################################################ -->
-      <ul class="clear">
-        <li class="active"><a href="index.html">Home</a></li>
-        <li><a href="#">Add</a>
-          <ul>
-            <!-- <li><a ui-sref="add_students">Student</a></li> -->
-            <li><a>Student</a>
-              <ul>
-                <li><a ui-sref="add_students_from_excel_file">Load Excel File</a></li>
-                <li><a ui-sref="add_students_manual">Manual</a></li>
+      <!-- ################################################################################################ -->
+      <div class="wrapper row1">
+        <header id="header" class="clear">
+          <!-- ################################################################################################ -->
+          <div id="logo" class="fl_left">
+            <h1><a href="/">Demo Application</a></h1>
+            <p>For Demo</p>
+          </div>
+          <div class="fl_right" ng-show="vm.UserService.isLogin">
+            <nav id="mainav" class="clear">
+              <!-- ################################################################################################ -->
+              <ul class="clear">
+                <li><a class="glyphicon glyphicon-user" style="font-size: 25px"href="#"></a>
+                  {% verbatim %}
+                  welcome {{vm.UserService.user.first_name}}
+                  {% endverbatim %}
+                  <ul>
+                    <li><a href="pages/settings.html">Setting</a></li>
+                    <li><a href="#" ng-click="vm.logout()">Logout</a></li>
+                  </ul>
+                </li>
               </ul>
-            <!--
+            </nav>
+          </div>
+
+          <!-- ################################################################################################ -->
+        </header>
+      </div>
+      <!-- ################################################################################################ -->
+      <!-- ################################################################################################ -->
+      <!-- ################################################################################################ -->
+      <div class="wrapper row2">
+        <div class="rounded">
+          <nav id="mainav" class="clear">
+            <!-- ################################################################################################ -->
+            <ul class="clear">
+              <li class="active"><a href="index.html">Home</a></li>
+              <li><a href="#">Add</a>
+                <ul>
+                  <!-- <li><a ui-sref="add_students">Student</a></li> -->
+                  <li><a>Student</a>
+                    <ul>
+                      <li><a ui-sref="add_students_from_excel_file">Load Excel File</a></li>
+                      <li><a ui-sref="add_students_manual">Manual</a></li>
+                      <li><a ui-sref="add_students_manual">Manual</a></li>
+                    </ul>
+                    <li><a ui-sref="add_campus_drive">Campus Drive</a></li>
+
+                                <!--
             <li><a href="pages/portfolio.html">Portfolio</a></li>
             <li><a href="pages/full-width.html">Full Width</a></li>
             <li><a href="pages/sidebar-left.html">Sidebar Left</a></li>
@@ -87,30 +87,32 @@ Licence URI: http://www.os-templates.com/template-terms
             <li><a href="pages/sidebar-right.html">Sidebar Right</a></li>
             <li><a href="pages/sidebar-right-2.html">Sidebar Right 2</a></li>
             <li><a href="pages/basic-grid.html">Basic Grid</a></li>
-                -->
-          </ul>
-        </li>
-        <li><a href="#">View</a>
-          <ul>
-            <li><a ui-sref="list_students">Students</a></li>
-        <!--
+            -->
+                </ul>
+              </li>
+              <li><a href="#">View</a>
+                <ul>
+                    <li><a ui-sref="list_students">Students</a></li>
+                    <li><a ui-sref="list_campus_drive">Campus Drives</a></li>
+
+                          <!--
             <li><a class="drop" href="#">Level 2 + Drop</a>
               <ul>
                 <li><a href="#">Level 3</a></li>
                 <li><a href="#">Level 3</a></li>
               </ul>
             </li>
--->
-          </ul>
-        </li>
-        <li ng-if="vm.UserService.isLogin"><a href="#">Edit</a>
-          <ul>
-            <!-- <li><a ui-sref="add_students">Student</a></li> -->
-              <li><a ui-sref="edit_personal_detail">Personal Detail</a></li>
-              <li><a ui-sref="edit_academic_detail">Academic Detail</a></li>
-              <li><a ui-sref="edit_pg_detail">PG Detail</a></li>
+            -->
+                </ul>
+              </li>
+              <li ng-if="vm.UserService.isLogin"><a href="#">Edit</a>
+                <ul>
+                  <!-- <li><a ui-sref="add_students">Student</a></li> -->
+                  <li><a ui-sref="edit_personal_detail">Personal Detail</a></li>
+                  <li><a ui-sref="edit_academic_detail">Academic Detail</a></li>
+                  <li><a ui-sref="edit_pg_detail">PG Detail</a></li>
 
-            <!--
+                              <!--
             <li><a href="pages/portfolio.html">Portfolio</a></li>
             <li><a href="pages/full-width.html">Full Width</a></li>
             <li><a href="pages/sidebar-left.html">Sidebar Left</a></li>
@@ -118,81 +120,53 @@ Licence URI: http://www.os-templates.com/template-terms
             <li><a href="pages/sidebar-right.html">Sidebar Right</a></li>
             <li><a href="pages/sidebar-right-2.html">Sidebar Right 2</a></li>
             <li><a href="pages/basic-grid.html">Basic Grid</a></li>
-                -->
-          </ul>
-        </li>
-	</span>
-        <li><a href="#">Add Details</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Contact Us</a></li>
+            -->
+                </ul>
+              </li>
+</span>
+<li><a href="#">Add Details</a></li>
+<li><a href="#">About Us</a></li>
+<li><a href="#">Contact Us</a></li>
 
-      </ul>
-      <!-- ################################################################################################ -->
-    </nav>
-  </div>
+</ul>
+<!-- ################################################################################################ -->
+</nav>
+</div>
 </div>
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <div class="wrapper" ng-show="vm.UserService.isLogin">
   <div id="slider">
-    <div id="slide-wrapper" class="rounded clear">
-      <!-- ################################################################################################ -->
-      <figure id="slide-1"><a class="view" href="#"><img src="{% static 'images/demo/slider/1.png' %}" alt=""></a>
-        <figcaption>
-          <h2>Nullamlacus dui ipsum</h2>
-          <p>Attincidunt vel nam a maurisus lacinia consectetus magnisl sed ac morbi. Inmaurisus habitur pretium eu et ac vest penatibus id lacus parturpis.</p>
-          <p class="right"><a href="#">Continue Reading &raquo;</a></p>
-        </figcaption>
-      </figure>
-      <figure id="slide-2"><a class="view" href="#"><img src="{% static 'images/demo/slider/2.png' %}" alt=""></a>
-        <figcaption>
-          <h2>Aliquatjusto quisque nam</h2>
-          <p>Attincidunt vel nam a maurisus lacinia consectetus magnisl sed ac morbi. Inmaurisus habitur pretium eu et ac vest penatibus id lacus parturpis.</p>
-          <p class="right"><a href="#">Continue Reading &raquo;</a></p>
-        </figcaption>
-      </figure>
-      <figure id="slide-3"><a class="view" href="#"><img src="{% static 'images/demo/slider/3.png' %}" alt=""></a>
-        <figcaption>
-          <h2>Aliquatjusto quisque nam</h2>
-          <p>Attincidunt vel nam a maurisus lacinia consectetus magnisl sed ac morbi. Inmaurisus habitur pretium eu et ac vest penatibus id lacus parturpis.</p>
-          <p class="right"><a href="#">Continue Reading &raquo;</a></p>
-        </figcaption>
-      </figure>
-      <figure id="slide-4"><a class="view" href="#"><img src="{% static 'images/demo/slider/4.png' %}" alt=""></a>
-        <figcaption>
-          <h2>Aliquatjusto quisque nam</h2>
-          <p>Attincidunt vel nam a maurisus lacinia consectetus magnisl sed ac morbi. Inmaurisus habitur pretium eu et ac vest penatibus id lacus parturpis.</p>
-          <p class="right"><a href="#">Continue Reading &raquo;</a></p>
-        </figcaption>
-      </figure>
-      <figure id="slide-5"><a class="view" href="#"><img src="{% static 'images/demo/slider/5.png' %}" alt=""></a>
-        <figcaption>
-          <h2>Dapiensociis temper donec</h2>
-          <p>Attincidunt vel nam a maurisus lacinia consectetus magnisl sed ac morbi. Inmaurisus habitur pretium eu et ac vest penatibus id lacus parturpis.</p>
-          <p class="right"><a href="#">Continue Reading &raquo;</a></p>
-        </figcaption>
-      </figure>
-      <!-- ################################################################################################ -->
-      <ul id="slide-tabs">
-        <li><a href="#slide-1">All About The University</a></li>
-        <li><a href="#slide-2">Why You Should Study With Us</a></li>
-        <li><a href="#slide-3">Education And Student Experience</a></li>
-        <li><a href="#slide-4">Alumni And Its Donors</a></li>
-        <li><a href="#slide-5">Latest University News &amp; Events</a></li>
-      </ul>
-      <!-- ################################################################################################ -->
+        <div id="slide-wrapper" class="rounded clear">
+          {% verbatim %}
+          <uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+
+            <uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+
+              <img ng-src="{{slide.image}}" style="margin:auto;">
+
+              <div class="carousel-caption">
+
+              </div>
+
+            </uib-slide>
+
+          </uib-carousel>
+          {% endverbatim %}
+        </div>
+      </div>
     </div>
   </div>
 </div>
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
-<div class="wrapper row3">
+<div class="wrapper row3" id="content-area">
   <div class="rounded">
     <main class="container clear ui-view">
       <!-- main body -->
-        <!-- ################################################################################################ -->
+      <!-- ################################################################################################ -->
     </main>
   </div>
 </div>
@@ -210,13 +184,13 @@ Licence URI: http://www.os-templates.com/template-terms
       </div>
       <div class="one_third">
         <address>
-        Long Educational Facility Name<br>
-        Address Line 2<br>
-        Town/City<br>
-        Postcode/Zip<br>
-        <br>
-        <i class="fa fa-phone pright-10"></i> xxxx xxxx xxxxxx<br>
-        <i class="fa fa-envelope-o pright-10"></i> <a href="#">contact@domain.com</a>
+          Long Educational Facility Name<br>
+          Address Line 2<br>
+          Town/City<br>
+          Postcode/Zip<br>
+          <br>
+          <i class="fa fa-phone pright-10"></i> xxxx xxxx xxxxxx<br>
+          <i class="fa fa-envelope-o pright-10"></i> <a href="#">contact@domain.com</a>
         </address>
       </div>
       <div class="one_third">
@@ -251,7 +225,8 @@ Licence URI: http://www.os-templates.com/template-terms
     <!-- ################################################################################################ -->
   </div>
 </div>
-<!-- JAVASCRIPTS -->
-{% include 'javascripts.html' %}
-</body>
+
+        <!-- JAVASCRIPTS -->
+        {% include 'javascripts.html' %}
+    </body>
 </html>

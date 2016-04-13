@@ -198,12 +198,12 @@ nav ul, nav ol{margin:0; padding:0; list-style:none;}
 
 /* Tables
 --------------------------------------------------------------------------------------------------------------- */
-table, th, td{border:1px solid; border-collapse:collapse; vertical-align:top; box-sizing:border-box;}
+/*table, th, td{border:1px solid; border-collapse:collapse; vertical-align:top; box-sizing:border-box;}
 table, th{table-layout:auto;}
 table{width:100%; margin-bottom:15px;}
 th, td{padding:5px 8px;}
 td{border-width:0 1px;}
-
+*/
 
 /* Gallery
 --------------------------------------------------------------------------------------------------------------- */
@@ -341,12 +341,13 @@ label span{color:#FF0000; background-color:inherit;}
 
 
 /* Tables + Comments */
+/*
 table, th, td, #comments .avatar, #comments input, #comments textarea{border-color:#D7D7D7;}
 th{color:#FFFFFF; background-color:#373737;}
 tr, #comments li, #comments input[type="submit"], #comments input[type="reset"]{color:inherit; background-color:#FBFBFB;}
 tr:nth-child(odd), #comments li:nth-child(odd){color:inherit; background-color:#FFFFFF;}
 table a, #comments a{background-color:inherit;}
-
+*/
 
 /* ------------------------------------------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------------------------------------------ */
@@ -427,7 +428,7 @@ table a, #comments a{background-color:inherit;}
 	.scrollable{display:block; width:100%; margin:0 0 30px 0; padding:0 0 15px 0; overflow:auto; overflow-x:scroll;}
 	.scrollable table{margin:0; padding:0; white-space:nowrap;}
 }
-.table>tbody>tr>td {
+table,th,td {
 color:black
 }
 .modal{
@@ -449,3 +450,5 @@ legend.scheduler-border {
     padding:0 10px; /* To give a bit of padding on the left and right */
     border-bottom:none;
 }
+
+

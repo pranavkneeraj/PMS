@@ -2,7 +2,7 @@
 This view module is used to specify the User Details
 """
 
-from academic.models import AcademicDetail, CampusDrive, PGSem
+from academic.models import AcademicDetail, CampusDrive, PGSem, SpecialCriteria, Interested
 from rest_framework import viewsets
 from django.contrib.auth.views import logout
 from rest_framework.views import APIView
@@ -14,7 +14,7 @@ from rest_framework.permissions import AllowAny
 import json
 from rest_framework import status, views
 from django.views.decorators.csrf import csrf_exempt
-from academic.serializers import AcademicDetailSerializer, CampusDriveSerializer, PGSemSerializer
+from academic.serializers import AcademicDetailSerializer, CampusDriveSerializer, PGSemSerializer, SpecialCriteriaSerializer, InterestedSerializer
 from django.db.models import Q
 class AcademicDetailViewSet(viewsets.ModelViewSet):
     # pylint: disable = too-many-ancestors
@@ -48,3 +48,21 @@ class PGSemViewSet(viewsets.ModelViewSet):
         if params.get('academic_detail_id'):
             q = q & Q(academic_id=params.get('academic_detail_id'))
         return queryset.filter(q).order_by('-created_on')
+
+
+class SpecialCriteriaViewSet(viewsets.ModelViewSet):
+    # pylint: disable = too-many-ancestors
+    """
+    A viewset for viewing and editing user instances.
+    """
+    serializer_class = SpecialCriteriaSerializer
+    queryset = SpecialCriteria.objects.filter(deleted_on=None)
+
+
+class InterestedViewSet(viewsets.ModelViewSet):
+    # pylint: disable = too-many-ancestors
+    """
+    A viewset for viewing and editing user instances.
+    """
+    serializer_class = InterestedSerializer
+    queryset = Interested.objects.filter(deleted_on=None)

@@ -3,16 +3,18 @@
 
   angular
     .module('placement', [
-	'ui.router',
+        'ui.router',
         'placement.config',
         'placement.routes',
-	'placement.directives',
-	'pms.accounts',
+        'placement.directives',
+        'pms.accounts',
         'pms.authentication',
-	'pms.layout',
-	'ngCookies',	
-	'ui.bootstrap',
-	'ngFileUpload'
+        'pms.layout',
+	'pms.campusdrive',
+        'ngCookies',
+        'ngAnimate',
+        'ui.bootstrap',
+        'ngFileUpload'
     ]);
 
   angular

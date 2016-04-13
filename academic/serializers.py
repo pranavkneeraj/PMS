@@ -3,7 +3,7 @@ This module is used to define serializer
 """
 
 from rest_framework import serializers
-from academic.models import AcademicDetail, CampusDrive, PGSem
+from academic.models import AcademicDetail, CampusDrive, PGSem,SpecialCriteria, Interested
 from user.models import User
 
 class AcademicDetailSerializer(serializers.ModelSerializer):
@@ -47,3 +47,17 @@ class PGSemSerializer(serializers.ModelSerializer):
     """
     class Meta:
         model = PGSem
+
+class SpecialCriteriaSerializer(serializers.ModelSerializer):
+    """
+    Serializer for SpecialCriteria Model
+    """
+    class Meta:
+        model = SpecialCriteria
+
+class InterestedSerializer(serializers.ModelSerializer):
+    """
+    Serializer for Interested Model
+    """
+    class Meta:
+        model = Interested
