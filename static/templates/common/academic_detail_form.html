@@ -1,130 +1,165 @@
 <form id='academicDetailForm' name="StudentAcademicDetail" class="form-horizontal" role="form" ng-submit="StudentAcademicDetail.$valid && vm.add_academic_detail() || vm.edit(StudentAcademicDetail)" novalidate>
-                        <div class="form-group">
-                            <label for="" class="col-sm-3 control-label">Hsc Marks</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" placeholder="Total marks of Hsc" name="hsc_marks" required ng-model="vm.studentAcademicDetail.hsc_marks">
-                                <div ng-show="StudentAcademicDetail.$submitted || StudentAcademicDetail.$touched">
-                                    <div ng-show="StudentAcademicDetail.hsc_marks.$error.required" class="text-danger">Tell us your Hsc Marks</div>
-                                </div>
-                            </div>
 
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="col-sm-3 control-label">Hsc Percentage</label>
-                            <div class="col-sm-9">
-                                <input type="text" name="hsc_percentage"class="form-control" placeholder="Hsc Percentage" required ng-model="vm.studentAcademicDetail.hsc_percentage">
-                                <div ng-show="StudentAcademicDetail.$submitted || StudentAcademicDetail.$touched">
-                                    <div ng-show="StudentAcademicDetail.hsc_percentage.$error.required" class="text-danger">Tell us your Hsc Percentage</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="col-sm-3 control-label">Hsc Passout Year</label>
-                            <div class="col-sm-9">
-                                <input type="text" name="hsc_passout_year"class="form-control" placeholder="Hsc Passout Year" required="" ng-model="vm.studentAcademicDetail.hsc_passout_year">
-                                <div ng-show="StudentAcademicDetail.$submitted || StudentAcademicDetail.$touched">
-                                    <div ng-show="StudentAcademicDetail.hsc_passout_year.$error.required" class="text-danger">Tell us
-                                        your Hsc PassedOut Year</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label  class="col-sm-3 control-label">Ssc Marks</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" name="ssc_marks" placeholder="Ssc Marks" required="" ng-model="vm.studentAcademicDetail.ssc_marks">
-                                <div ng-show="StudentAcademicDetail.$submitted || StudentAcademicDetail.$touched">
-                                    <div ng-show="StudentAcademicDetail.ssc_marks.$error.required" class="text-danger">Tell us your last name</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="col-sm-3 control-label">Ssc Percentage</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" name="ssc_percentage" placeholder="Ssc Percentage" required="" ng-model="vm.studentAcademicDetail.ssc_percentage">
-                                <div ng-show="StudentAcademicDetail.$submitted || StudentAcademicDetail.$touched">
-                                      <div ng-show="StudentAcademicDetail.ssc_percetage.$error.required" class="text-danger">Tell us your ssc_percetage</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="col-sm-3 control-label">Ssc Passout Year</label>
-                            <div class="col-sm-9">
-                                <input type="text" name="ssc_passout_year"class="form-control" placeholder="Ssc Passout Year" required="" ng-model="vm.studentAcademicDetail.ssc_passout_year">
-                                <div ng-show="StudentAcademicDetail.$submitted || StudentAcademicDetail.$touched">
-                                    <div ng-show="StudentAcademicDetail.ssc_passout_year.$error.required" class="text-danger">Tell us your Ssc PassedOut Year</div>
-                                </div>
-                            </div>
-                        </div>
+    <div class="form-group required">
+        <label for="" class="col-sm-3 control-label">Ssc Percentage</label>
+        <div class="col-sm-9">
+            <input type="number" class="form-control" name="ssc_percentage" placeholder="Ssc Percentage" min="0" max="100" ng-model="vm.studentAcademicDetail.ssc_percentage">
+            <div ng-show="StudentAcademicDetail.ssc_percentage.$error.max || StudentAcademicDetail.ssc_percentage.$error.min" class="text-danger">Please enter percentage between 00.00 to 100</div>
+            <div ng-show="StudentAcademicDetail.$submitted || StudentAcademicDetail.$touched">
+                <div ng-show="StudentAcademicDetail.ssc_percentage.$error.required" class="text-danger">Tell us your SSC Percentage</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group required">
+        <label for="" class="col-sm-3 control-label">Ssc Passout Year</label>
+        <div class="col-sm-9">
+            <input type="number" name="ssc_passout_year"class="form-control" placeholder="Ssc Passout Year" required="" ng-model="vm.studentAcademicDetail.ssc_passout_year">
+       </div>
+        <div ng-show="StudentAcademicDetail.$submitted || StudentAcademicDetail.$touched">
+            <div ng-show="StudentAcademicDetail.ssc_passout_year.$error.required" class="text-danger">Tell us your Ssc PassedOut Year</div>
+        </div>
+    </div>
+    <div class="form-group required">
+        <label for="" class="col-sm-3 control-label">Hsc Percentage</label>
+        <div class="col-sm-9">
+            <input type="number" name="hsc_percentage"class="form-control" placeholder="Hsc Percentage" required min="0" max="100" ng-model="vm.studentAcademicDetail.hsc_percentage">
+            <div ng-show="StudentAcademicDetail.hsc_percentage.$error.max || StudentAcademicDetail.hsc_percentage.$error.min" class="text-danger">Please enter percentage between 00.00 to 100</div>
+            <div ng-show="StudentAcademicDetail.$submitted || StudentAcademicDetail.$touched">
+                <div ng-show="StudentAcademicDetail.hsc_percentage.$error.required" class="text-danger">Tell us your Hsc Percentage</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group required">
+        <label for="" class="col-sm-3 control-label">Hsc Passout Year</label>
+        <div class="col-sm-9">
+            <input type="number" name="hsc_passout_year"class="form-control" placeholder="Hsc Passout Year(Ex. 2015)" required="" ng-model="vm.studentAcademicDetail.hsc_passout_year">
+        <div ng-show="vm.studentAcademicDetail.hsc_passout_year<(vm.studentAcademicDetail.ssc_passout_year+2)" class="text-danger">Hsc Passed Out Year should be greater than ssc passed out year by atleast 2 years</div>
 
-                        <div class="form-group">
-                            <label  class="col-sm-3 control-label">UG Marks</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" name="ug_marks" placeholder="UG Marks" required="" ng-model="vm.studentAcademicDetail.ug_marks">
-                                <div ng-show="StudentAcademicDetail.$submitted || StudentAcademicDetail.$touched">
-                                    <div ng-show="StudentAcademicDetail.ug_marks.$error.required" class="text-danger">Tell us your UG Marks</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="col-sm-3 control-label">UG Percentage</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" name="ug_percentage" placeholder="UG Percentage" required="" ng-model="vm.studentAcademicDetail.ug_percentage">
-                                <div ng-show="StudentAcademicDetail.$submitted || StudentAcademicDetail.$touched">
-                                      <div ng-show="StudentAcademicDetail.ug_percetage.$error.required" class="text-danger">Tell us your UG Percetage</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="" class="col-sm-3 control-label">UG Course</label>
-                            <div class="col-sm-9">
-                                <select class="form-control" required name="ug_course" ng-model="vm.studentAcademicDetail.ug_course">
-                                    <option value='bca'>BCA</option>
-                                    <option value='bcs'>Bsc(Computer Science)</option>
-                                    <option value='be'>BE</option>
-                                    <option value='other'>Other</option>
-                                </select>
-                                <div ng-show="StudentAcademicDetail.$submitted || StudentAcademicDetail.$touched">
-                                    <div ng-show="StudentAcademicDetail.ug_course.$error.required" class="text-danger">Tell us your UG Course</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="" class="col-sm-3 control-label">UG Passout Year</label>
-                            <div class="col-sm-9">
-                                <input type="text" name="ug_passout_year"class="form-control" placeholder="UG Passout Year" required="" ng-model="vm.studentAcademicDetail.ug_passout_year">
-                                <div ng-show="StudentAcademicDetail.$submitted || StudentAcademicDetail.$touched">
-                                    <div ng-show="StudentAcademicDetail.ug_passout_year.$error.required" class="text-danger">Tell us your UG PassedOut Year</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label  class="col-sm-3 control-label">Exprience</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" name="exprience" placeholder="Exprience" required="" ng-model="vm.studentAcademicDetail.exprience">
-                                <div ng-show="StudentAcademicDetail.$submitted || StudentAcademicDetail.$touched">
-                                    <div ng-show="StudentAcademicDetail.exprience.$error.required" class="text-danger">Tell us your exprience</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label  class="col-sm-3 control-label">Current PG Sem</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" name="current_pg_sem" placeholder="Current PG SEM" required="" ng-model="vm.studentAcademicDetail.current_pg_sem">
-                                <div ng-show="StudentAcademicDetail.$submitted || StudentAcademicDetail.$touched">
-                                    <div ng-show="StudentAcademicDetail.current_pg_sem.$error.required" class="text-danger">Tell us your current_pg_sem</div>
-                                </div>
-                            </div>
-                        </div>
+       <div ng-show="StudentAcademicDetail.$submitted || StudentAcademicDetail.$touched">
+                <div ng-show="StudentAcademicDetail.hsc_passout_year.$error.required" class="text-danger">Tell us
+                    your Hsc PassedOut Year</div>
+            </div>
+        </div>
+    </div>
 
 
-                        <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-9">
-                                <button ng-if="vm.isEditForm" type="submit" class="btn btn-success btn-md">Update</button>
-                                <button ng-if="!vm.isEditForm" type="submit" class="btn btn-success btn-md">Save & Next</button>
-                                <button type="reset" class="btn btn-default btn-md">Reset</button>
-                            </div>
-                        </div>
-                    </form>
+    <div class="form-group required">
+        <label for="" class="col-sm-3 control-label">UG Course</label>
+        <div class="col-sm-9">
+            <select class="form-control" required name="ug_course" ng-init="vm.studentAcademicDetail.ug_course='bca'" ng-model="vm.studentAcademicDetail.ug_course">
+                <option value='bca'>BCA</option>
+                <option value='bcs'>Bsc(Computer Science)</option>
+                <option value='be'>BE</option>
+                <option value='other'>Other</option>
+            </select>
+            <div ng-show="StudentAcademicDetail.$submitted || StudentAcademicDetail.$touched">
+                <div ng-show="StudentAcademicDetail.ug_course.$error.required" class="text-danger">Tell us your UG Course</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group required">
+        <label for="" class="col-sm-3 control-label">UG Percentage</label>
+        <div class="col-sm-9">
+            <input type="number" class="form-control" name="ug_percentage" placeholder="UG Percentage" required min="0" max="100" ng-model="vm.studentAcademicDetail.ug_percentage">
+            <div ng-show="StudentAcademicDetail.ug_percentage.$error.max || StudentAcademicDetail.ug_percentage.$error.min" class="text-danger">Please enter percentage between 00.00 to 100</div>
+            <div ng-show="StudentAcademicDetail.$submitted || StudentAcademicDetail.$touched">
+                <div ng-show="StudentAcademicDetail.ug_percentage.$error.required" class="text-danger">Tell us your UG Percentage</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group required">
+        <label for="" class="col-sm-3 control-label">Pursuing Course</label>
+        <div class="col-sm-9">
+            <select class="form-control" required name="persuing_course" ng-init="vm.studentAcademicDetail.persuing_course=''" ng-model="vm.studentAcademicDetail.persuing_course">
+                <option value='ug'>UG</option>
+                <option value='pg'>PG</option>
+                <option value='none'>None</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group required" ng-if="vm.studentAcademicDetail.persuing_course=='none'">
+        <label for="" class="col-sm-3 control-label">Last Course</label>
+        <div class="col-sm-9">
+            <select class="form-control" required name="last_course" ng-init="vm.studentAcademicDetail.last_course='ug'" ng-model="vm.studentAcademicDetail.last_course">
+                <option value='ug'>UG</option>
+                <option value='pg'>PG</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group required">
+        <label for="" class="col-sm-3 control-label">UG Batch Year</label>
+        <div class="col-sm-9">
+            <input type="text" name="ug_passout_year"class="form-control" placeholder="UG Passout Year" required="" ng-model="vm.studentAcademicDetail.ug_passout_year">
+            <div ng-show="vm.studentAcademicDetail.ug_passout_year<(vm.studentAcademicDetail.ssc_passout_year+1)" class="text-danger">ug Passed Out Year should be greater than ssc passed out  year</div>
+        </div>
+        <div ng-show="StudentAcademicDetail.$submitted || StudentAcademicDetail.$touched">
+            <div ng-show="StudentAcademicDetail.ug_passout_year.$error.required" class="text-danger">Tell us your UG PassedOut Year</div>
+        </div>
+    </div>
+    <div ng-if="(vm.studentAcademicDetail.persuing_course=='none' && vm.studentAcademicDetail.last_course=='pg') || vm.studentAcademicDetail.persuing_course=='pg'">
+        <div class="form-group required">
+            <label for="" class="col-sm-3 control-label">PG Course</label>
+            <div class="col-sm-9">
+                <select class="form-control" required name="pg_course" ng-init="vm.studentAcademicDetail.pg_course='MCA'" ng-model="vm.studentAcademicDetail.pg_course">
+                    <option value='MCA'>MCA</option>
+                    <option value='MSc(Computer Science)'>MSc(Computer Science)</option>
+                    <option value='other'>Other</option>
+                </select>
+                <div ng-show="StudentAcademicDetail.$submitted || StudentAcademicDetail.$touched">
+                    <div ng-show="StudentAcademicDetail.pg_course.$error.required" class="text-danger">Tell us your PG Course</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group required">
+            <label  class="col-sm-3 control-label">PG Batch Year</label>
+            <div class="col-sm-9">
+                <input type="number" class="form-control" name="pg_passout_year" placeholder="PG Passout Year/Will be passout year" required="" ng-model="vm.studentAcademicDetail.pg_passout_year">
+                <div ng-show="vm.studentAcademicDetail.ug_passout_year<(vm.studentAcademicDetail.pg_passout_year+1)" class="text-danger">SscBatch  Year should be greater than UG Batch Year year by atleast 2 years</div>
+            </div>
+            <div ng-show="StudentAcademicDetail.$submitted || StudentAcademicDetail.$touched">
+                <div ng-show="StudentAcademicDetail.pg_passout_year.$error.required" class="text-danger">Tell us your Pg Passout Year</div>
+            </div>
+        </div>
+        <div class="form-group required">
+            <label for="" class="col-sm-3 control-label">PG Percentage</label>
+            <div class="col-sm-9">
+                <input type="number" class="form-control" name="pg_percentage" placeholder="PG Percentage" required min="0" max="100" ng-model="vm.studentAcademicDetail.pg_percentage">
+                <div ng-show="StudentAcademicDetail.pg_percentage.$error.max || StudentAcademicDetail.pg_percentage.$error.min" class="text-danger">Please enter percentage between 00.00 to 100</div>
+                <div ng-show="StudentAcademicDetail.$submitted || StudentAcademicDetail.$touched">
+                    <div ng-show="StudentAcademicDetail.pg_percentage.$error.required" class="text-danger">Tell us your UG Percentage</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group required" ng-if="vm.studentAcademicDetail.persuing_course!='none'">
+        <label for="" class="col-sm-3 control-label" >Number Of Backlogs</label>
+        <div class="col-sm-9">
+            <input type="number" class="form-control" placeholder="Number of backlogs" name="NoOfBacklogs" ng-model="vm.studentAcademicDetail.no_of_backlogs">
+        </div>
+    </div>
+    <div class="form-group required">
+        <label for="" class="col-sm-3 control-label" >Number Of gaps</label>
+        <div class="col-sm-9">
+            <input type="number" class="form-control" placeholder="Number Of gaps" name="NoOfgaps" ng-model="vm.studentAcademicDetail.no_of_gap">
+        </div>
+    </div>
+    <div class="form-group required">
+        <label  class="col-sm-3 control-label">Experience</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" name="experience" placeholder="Experience" required="" ng-model="vm.studentAcademicDetail.experience">
+            <div ng-show="StudentAcademicDetail.$submitted || StudentAcademicDetail.$touched">
+                <div ng-show="StudentAcademicDetail.experience.$error.required" class="text-danger">Tell us your Exprience</div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9">
+            <button ng-if="vm.isEditForm" type="submit" class="btn btn-success btn-md">Update</button>
+            <button ng-if="!vm.isEditForm" type="submit" class="btn btn-success btn-md">Save & Next</button>
+            <button type="reset" class="btn btn-default btn-md">Reset</button>
+        </div>
+    </div>
+</form>

@@ -23,7 +23,6 @@
         UserService.campusDriveApi.query().$promise.then(
             function (success) {
                 vm.campusDrives = success;
-
                 vm.totalItems = success.length;
                 console.log("dasdsadasdsadsad",success.length);
                 $anchorScroll('content-area');
@@ -51,6 +50,34 @@
                 console.log("asdadasd");
             });
         };
+        vm.remove = function (selectedCampusDrive) {
+               var modalInstance = $uibModal.open({
+                   animation: $scope.animationsEnabled,
+                   templateUrl: 'static/templates/common/modal_alert.html ',
+                   controller:'alertModalController',
+                   controllerAs:'vm',
+                   resolve:{
+                        msg:function(){
+                            return "Do you want delete this campus drive?"
+                        }
+                   }
+               });
+            console.log(modalInstance)
+            modalInstance.result.then(function(success){
+                console.log("success",success)
+                UserService.campusDriveApi.remove({'id':selectedCampusDrive.id}).$promise.then(
+                    function (success) {
+                        console.log(angular.element(document).find('#'+selectedCampusDrive.id));
+                        angular.element(document).find('#'+selectedCampusDrive.id).remove();
+                    }, function (error) {
+                        console.log("error",error)
+                    }
+                );
+            },function(error){
+                console.log("error",error)
+            });
+        };
+
         /*
         vm.editAcademicDetail = function (selectedStudent) {
 

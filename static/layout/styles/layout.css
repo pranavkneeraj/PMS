@@ -246,7 +246,7 @@ td{border-width:0 1px;}
 
 /* Rounded Corners
 --------------------------------------------------------------------------------------------------------------- */
-.rounded, input, button, textarea, #header input, #footer input, #slide-wrapper figcaption, .avatar, #comments li, .faico a, #twitter, 
+.rounded, input, button, textarea, #header input, #footer input, #slide-wrapper figcaption, .avatar, #comments li, .faico a, #twitter,
 .pagination a, .pagination strong{border-radius:8px;}
 
 #header button, #footer button{border-radius:0 8px 8px 0;}
@@ -364,69 +364,69 @@ table a, #comments a{background-color:inherit;}
 /* Smartphone + Tablet
 ---------------------------------------------------------------------------------------------------------------------------------------*/
 @media screen and (min-width:180px) and (max-width:750px) {
-	.imgl, .imgr{display:inline-block; float:none; margin:0 0 10px 0;}
-	.fl_left, .fl_right{display:block; float:none;}
-	.one_half, .one_third, .two_third, .one_quarter, .two_quarter, .three_quarter{display:block; float:none; width:auto; margin:0 0 30px 0; padding:0;}
+        .imgl, .imgr{display:inline-block; float:none; margin:0 0 10px 0;}
+        .fl_left, .fl_right{display:block; float:none;}
+        .one_half, .one_third, .two_third, .one_quarter, .two_quarter, .three_quarter{display:block; float:none; width:auto; margin:0 0 30px 0; padding:0;}
 }
 
 @media screen and (min-width:180px) and (max-width:900px) {
-	.wrapper{max-width:95%;}
+        .wrapper{max-width:95%;}
 
-	#topbar{text-align:center;}
+        #topbar{text-align:center;}
 
-	#header #logo{margin-bottom:15px; text-align:center;}
-	#header #logo h1{margin:0; line-height:1em;}
-	#header form{max-width:250px; margin:0 auto;}
-	#header input{min-width:0;}
+        #header #logo{margin-bottom:15px; text-align:center;}
+        #header #logo h1{margin:0; line-height:1em;}
+        #header form{max-width:250px; margin:0 auto;}
+        #header input{min-width:0;}
 
-	#mainav ul{display:none;}
-	#mainav form{display:block;}
+        #mainav ul{display:none;}
+        #mainav form{display:block;}
 
-	#slide-wrapper figure figcaption{display:none;}
-	#slider .view{display:block; position:relative; width:100%; height:100%;}
-	#slider .view:hover::before{display:block; position:absolute; top:0; left:0; width:100%; height:100%; content:""; background-color:rgba(0,0,0,.6); z-index:1;}
-	#slider .view:hover::after{display:block; position:absolute; top:50%; left:50%; width:36px; height:36px; margin:-18px 0 0 -18px; text-align:center; font-family:"FontAwesome"; content:"\f05a"; font-size:36px; line-height:36px; z-index:2;}
-	#slider #slide-tabs li{display:block; float:none;}
-	#slider #slide-tabs li a{width:100%; min-height:0; border-width:0 1px 1px 1px;}
-	#slider #slide-tabs li:first-child a{border-radius:0;}
-	#slider #slide-tabs li:last-child a{border-radius:0 0 8px 8px;}
+        #slide-wrapper figure figcaption{display:none;}
+        #slider .view{display:block; position:relative; width:100%; height:100%;}
+        #slider .view:hover::before{display:block; position:absolute; top:0; left:0; width:100%; height:100%; content:""; background-color:rgba(0,0,0,.6); z-index:1;}
+        #slider .view:hover::after{display:block; position:absolute; top:50%; left:50%; width:36px; height:36px; margin:-18px 0 0 -18px; text-align:center; font-family:"FontAwesome"; content:"\f05a"; font-size:36px; line-height:36px; z-index:2;}
+        #slider #slide-tabs li{display:block; float:none;}
+        #slider #slide-tabs li a{width:100%; min-height:0; border-width:0 1px 1px 1px;}
+        #slider #slide-tabs li:first-child a{border-radius:0;}
+        #slider #slide-tabs li:last-child a{border-radius:0 0 8px 8px;}
 
-	#twitter div{margin:0; padding:0;}	
-	#twitter div:first-child{padding:15px 0; border-right:none;}
+        #twitter div{margin:0; padding:0;}
+        #twitter div:first-child{padding:15px 0; border-right:none;}
 
-	.quickinfo li{max-width:250px;}
+        .quickinfo li{max-width:250px;}
 
-	#footer div:last-child{margin-bottom:0;}
-	#footer figure.center{text-align:left;}
-	#footer .faico li{margin:0 10px 10px 0;}
-	#footer input{min-width:0;}
+        #footer div:last-child{margin-bottom:0;}
+        #footer figure.center{text-align:left;}
+        #footer .faico li{margin:0 10px 10px 0;}
+        #footer input{min-width:0;}
 
-	#copyright{text-align:center;}
-	#copyright p:first-of-type{margin-bottom:10px;}
+        #copyright{text-align:center;}
+        #copyright p:first-of-type{margin-bottom:10px;}
 
-	#comments input[type="reset"]{margin-top:10px;}
+        #comments input[type="reset"]{margin-top:10px;}
 
-	.pagination li{display:inline-block; margin:0 5px 5px 0;}
+        .pagination li{display:inline-block; margin:0 5px 5px 0;}
 }
 
 @media screen and (min-width:750px) and (max-width:900px) {
-	.quickinfo{font-size:11px; line-height:1.2em;}
-	.quickinfo li a{padding:20px 5px 0 85px;}
+        .quickinfo{font-size:11px; line-height:1.2em;}
+        .quickinfo li a{padding:20px 5px 0 85px;}
 }
 
 
 /* Max Wrapper Width
 ---------------------------------------------------------------------------------------------------------------------------------------*/
 @media screen and (min-width:978px) {
-	.wrapper{max-width:978px;}
+        .wrapper{max-width:978px;}
 }
 
 
 /* Other
 ---------------------------------------------------------------------------------------------------------------------------------------*/
 @media screen and (max-width:650px) {
-	.scrollable{display:block; width:100%; margin:0 0 30px 0; padding:0 0 15px 0; overflow:auto; overflow-x:scroll;}
-	.scrollable table{margin:0; padding:0; white-space:nowrap;}
+        .scrollable{display:block; width:100%; margin:0 0 30px 0; padding:0 0 15px 0; overflow:auto; overflow-x:scroll;}
+        .scrollable table{margin:0; padding:0; white-space:nowrap;}
 }
 table,th,td {
 color:black
@@ -452,3 +452,7 @@ legend.scheduler-border {
 }
 
 
+.form-group.required .control-label:after {
+    content:" *";
+    color:red;
+}

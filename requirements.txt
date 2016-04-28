@@ -1,7 +1,9 @@
 Django==1.8.8
+django-appconf==1.0.1
 dj-database-url==0.3.0
 dj-static==0.0.6
 django-compressor==1.4
 djangorestframework==3.2.4
 psycopg2==2.6.1
 six==1.8.0
+xlrd==0.9.4

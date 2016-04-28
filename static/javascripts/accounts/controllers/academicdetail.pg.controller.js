@@ -16,6 +16,7 @@
    */
     function AcademicDetailPGController($location, $scope, $stateParams, UserService) {
         var vm = this;
+        vm.form_page = "static/templates/common/pg_detail_form.html";
         vm.submitInProgress = false;
         vm.pgSemDetail = [];
         vm.no_of_sem = parseInt($stateParams.no_of_sem);

@@ -15,16 +15,17 @@
                                 <div class="form-group">
                                     <label for="" class="col-sm-3 control-label">Percentage</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="pg_percentage"class="form-control" placeholder="Percentage" required ng-model="vm.pgSemDetail[$index].percentage">
-                                        <div ng-show="PGdetail.$submitted || PGdetail.$touched">
-                                            <div ng-show="PGdetail.hsc_percentage.$error.required" class="text-danger">Tell us your PG Sem Percentage</div>
+                                        <input type="text" name="pg_percentage"class="form-control" placeholder="Percentage" required min="0"  max="100" ng-model="vm.pgSemDetail[$index].percentage">
+                                        <div ng-show="PGDetail[$index].percentage.$error.max || PGDetail[$index].percentage.$error.max" class="text-danger">Please enter percentage between 00.00 to 100</div>
+                                        <div ng-show="PGDetail.$submitted || PGdetail.$touched">
+                                            <div ng-show="PGdetail[$index].percentage.$error.required" class="text-danger">Tell us your PG Sem percentage</div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="" class="col-sm-3 control-label">Number Of Backlogs</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="no_of_backlogs"class="form-control" placeholder="Number of backlogs" required="" ng-model="vm.pgSemDetail[$index].no_of_backlogs">
+                                        <input type="number" name="no_of_backlogs"class="form-control" placeholder="Number of backlogs" required="" ng-model="vm.pgSemDetail[$index].no_of_backlogs" ng-init="vm.pgSemDetail[$index].no_of_backlogs=0">
                                         <div ng-show="PGdetail.$submitted || PGdetail.$touched">
                                             <div ng-show="PGdetail.no_of_backlogs.$error.required" class="text-danger">Tell us your Number of bacKlogs</div>
                                         </div>

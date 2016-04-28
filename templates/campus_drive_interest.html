@@ -1,0 +1,31 @@
+<html ng-app="placement">
+    <head>
+        <title>JSPM's JPMS</title>
+        <base href="/" />
+        {% load staticfiles %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        {% include 'stylesheets.html' %}
+    </head>
+<body style="background:gray">
+<div class="wrapper row3" id="content-area" style="margin-top:251px;color:black;">
+{% if  not already_visited %}
+<div class="rounded text-center" style="height:200px">
+<span class="h3">Thank You</span>
+<h1 class="h4" style="margin-top:45px"><i>{{student}} </i>for showing interest in campus drive conducted by <strong>{{company}}</strong>. We will keep updating you with furture procedure
+</h1>
+
+</div>
+{% else %}
+<div class="rounded text-center" style="height:125px;">
+<span class="h3">Thank You</span>
+<h1 class="h4" style="margin-top:45px"><span class="glyphicon glyphicon-thumbs-down"></span>  But,You have already Visited this link
+</h1>
+</div>
+{% endif %}
+</div>
+</div>
+</body>
+</html>
+

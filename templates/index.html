@@ -36,16 +36,26 @@
         <header id="header" class="clear">
           <!-- ################################################################################################ -->
           <div id="logo" class="fl_left">
-            <h1><a href="/">Demo Application</a></h1>
-            <p>For Demo</p>
+	   <div class="row">
+	   <img class="col-sm-2"src="static/images/jica_logo.jpg"></img>
+	<div class="col-sm-10">
+            <h2 class="h2"><a href="/">JSPM's Placement Management System</a></h2>
+            <p>Placement Centralized</p>
+	</div>
+</div>
           </div>
           <div class="fl_right" ng-show="vm.UserService.isLogin">
             <nav id="mainav" class="clear">
               <!-- ################################################################################################ -->
               <ul class="clear">
-                <li><a class="glyphicon glyphicon-user" style="font-size: 25px"href="#"></a>
+                <li><a class="glyphicon glyphicon-user" style="font-size: 35px"href="#"></a>
                   {% verbatim %}
-                  welcome {{vm.UserService.user.first_name}}
+	         <span ng-show = "vm.UserService.user.first_name">
+                  {{vm.UserService.user.first_name}} {{vm.UserService.user.last_name}}
+		</span>
+		<span ng-show = "!vm.UserService.user.first_name">
+                  Unknown User
+		</span>
                   {% endverbatim %}
                   <ul>
                     <li><a href="pages/settings.html">Setting</a></li>
@@ -62,19 +72,18 @@
       <!-- ################################################################################################ -->
       <!-- ################################################################################################ -->
       <!-- ################################################################################################ -->
-      <div class="wrapper row2">
+      <div class="wrapper row2" ng-if="vm.UserService.isLogin">
         <div class="rounded">
           <nav id="mainav" class="clear">
             <!-- ################################################################################################ -->
             <ul class="clear">
               <li class="active"><a href="index.html">Home</a></li>
-              <li><a href="#">Add</a>
+              <li><a href="#" ng-if="vm.UserService.user.is_staff">Add</a>
                 <ul>
                   <!-- <li><a ui-sref="add_students">Student</a></li> -->
                   <li><a>Student</a>
                     <ul>
                       <li><a ui-sref="add_students_from_excel_file">Load Excel File</a></li>
-                      <li><a ui-sref="add_students_manual">Manual</a></li>
                       <li><a ui-sref="add_students_manual">Manual</a></li>
                     </ul>
                     <li><a ui-sref="add_campus_drive">Campus Drive</a></li>
@@ -90,10 +99,14 @@
             -->
                 </ul>
               </li>
-              <li><a href="#">View</a>
-                <ul>
-                    <li><a ui-sref="list_students">Students</a></li>
-                    <li><a ui-sref="list_campus_drive">Campus Drives</a></li>
+              <li ng-if="vm.UserService.user.is_staff"><a href=""> View Students</a>
+                  <ul>
+                      <li><a ui-sref="list_students">All</a></li>
+                      <li><a ui-sref="list_students_by_campus_drive">By Campus Drive</a></li>
+                      <li><a ui-sref="list_placed_students">Placed Student</a></li>
+                  </ul>
+              </li>
+              <li ng-if="vm.UserService.user.is_staff"><a ui-sref="list_campus_drive">Campus Drives</a></li>
 
                           <!--
             <li><a class="drop" href="#">Level 2 + Drop</a>
@@ -103,14 +116,11 @@
               </ul>
             </li>
             -->
-                </ul>
-              </li>
-              <li ng-if="vm.UserService.isLogin"><a href="#">Edit</a>
+              <li ng-if="vm.UserService.isLogin && !vm.UserService.user.is_staff"><a href="#">Edit</a>
                 <ul>
                   <!-- <li><a ui-sref="add_students">Student</a></li> -->
                   <li><a ui-sref="edit_personal_detail">Personal Detail</a></li>
                   <li><a ui-sref="edit_academic_detail">Academic Detail</a></li>
-                  <li><a ui-sref="edit_pg_detail">PG Detail</a></li>
 
                               <!--
             <li><a href="pages/portfolio.html">Portfolio</a></li>
@@ -124,7 +134,10 @@
                 </ul>
               </li>
 </span>
-<li><a href="#">Add Details</a></li>
+
+<li ng-if="!vm.UserService.user.is_staff"><a href="#">View Report</a></li>
+<li ng-if="!vm.UserService.user.is_staff"><a href="#">Company List</a></li>
+<li ng-if="!vm.UserService.user.is_staff"><a href="#">Placed Students</a></li>
 <li><a href="#">About Us</a></li>
 <li><a href="#">Contact Us</a></li>
 
@@ -136,7 +149,7 @@
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
-<div class="wrapper" ng-show="vm.UserService.isLogin">
+<div class="wrapper" ng-show="!vm.UserService.isLogin">
   <div id="slider">
         <div id="slide-wrapper" class="rounded clear">
           {% verbatim %}
@@ -164,7 +177,12 @@
 <!-- ################################################################################################ -->
 <div class="wrapper row3" id="content-area">
   <div class="rounded">
-    <main class="container clear ui-view">
+    <main class="container clear">
+	{% verbatim %}
+	
+        {% endverbatim %}
+	<div class="ui-view">
+	</div>
       <!-- main body -->
       <!-- ################################################################################################ -->
     </main>
@@ -178,19 +196,18 @@
     <footer id="footer" class="clear">
       <!-- ################################################################################################ -->
       <div class="one_third first">
-        <figure class="center"><img class="btmspace-15" src="images/demo/worldmap.png" alt="">
+        <figure class="center"><img class="btmspace-15" src="static/images/google%20map.png " alt="">
           <figcaption><a href="#">Find Us With Google Maps &raquo;</a></figcaption>
         </figure>
       </div>
       <div class="one_third">
-        <address>
-          Long Educational Facility Name<br>
-          Address Line 2<br>
-          Town/City<br>
-          Postcode/Zip<br>
-          <br>
-          <i class="fa fa-phone pright-10"></i> xxxx xxxx xxxxxx<br>
-          <i class="fa fa-envelope-o pright-10"></i> <a href="#">contact@domain.com</a>
+          <address>
+              Sr. No.80, Pune Mumbai Bypass Highway,<br>
+              Tathawade, Pune-411033<br>
+              <br>
+         <i class="fa fa-phone pright-10">+91-20-22932601 / +91-20-64103595 (Direct Line)</i><br>
+         <i class="fa fa-envelope-o pright-10"></i> <a href="#">jspmjica@gmail.com</a>
+
         </address>
       </div>
       <div class="one_third">
@@ -203,7 +220,7 @@
           <li><a class="faicon-rss" href="#"><i class="fa fa-rss"></i></a></li>
         </ul>
         <form class="clear" method="post" action="#">
-          <fieldset>
+            <fieldset>
             <legend>Subscribe To Our Newsletter:</legend>
             <input type="text" value="" placeholder="Enter Email Here&hellip;">
             <button class="fa fa-sign-in" type="submit" title="Sign Up"><em>Sign Up</em></button>
@@ -220,8 +237,7 @@
 <div class="wrapper row5">
   <div id="copyright" class="clear">
     <!-- ################################################################################################ -->
-    <p class="fl_left">Copyright &copy; 2014 - All Rights Reserved - <a href="#">Domain Name</a></p>
-    <p class="fl_right">Template by <a target="_blank" href="http://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
+    <p class="fl_left">Copyright &copy; 2016 - All Rights Reserved - <a href="#">Jspm Jica</a></p>
     <!-- ################################################################################################ -->
   </div>
 </div>

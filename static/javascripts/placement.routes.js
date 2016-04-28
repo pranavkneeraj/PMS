@@ -29,12 +29,12 @@
                 templateUrl: '/static/templates/authentication/register.html'
             })
             .state('academic_detail', {
-                url: 'register/academic_detail',
+                url: '/register/academic_detail',
                 templateUrl: '/static/templates/authentication/add_academic_detail.html',
                 controller:'AcademicDetailController',
                 controllerAs:'vm',
                 params :{
-                    student:null
+                    student: function (UserService) { return UserService.user }
                 }
             })
             .state('pg_detail', {
@@ -83,13 +83,13 @@
                 controllerAs: 'vm',
                 resolve: {
                     student: function(UserService, $location){
-                        var code = $location.path().split('/')[2];
-                        return UserService.codeApi.get({'code':code, 'include_user':'t'});
+                        var student_id = $location.path().split('/')[2];
+                        return UserService.api.get({'id':student_id});
                     }
                 }
             })
             .state('login', {
-                url: 'login',
+                url: '/login',
                 controller: 'LoginController',
                 controllerAs: 'vm',
                 templateUrl: '/static/templates/authentication/login.html'
@@ -124,7 +124,18 @@
                 controller: 'studentListController',
                 controllerAs: 'vm',
                 templateUrl: '/static/templates/pages/student_list.html'
-            });
+            })
+	    .state('list_students_by_campus_drive', {
+                url: '/campus_drive/list_student',
+                controller: 'studentListByCampusDriveController',
+                controllerAs: 'vm',
+                templateUrl: '/static/templates/pages/list_student_by_campus_drive.html'
+            })
+	    .state('show_interest', {
+                url: '/student/placement/campusdrive_interest',
+                templateUrl: '/static/templates/pages/campus_drive_interest.html'
+            })
+	    
 
         // $routeProvider.when('/', {
         //     controller: '',

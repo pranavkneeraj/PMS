@@ -22,8 +22,8 @@
         vm.submitInProgress = false;
         vm.student = {};
         if(student){
-            student.$promise.then(function (code) {
-                vm.student=code.user;
+            student.$promise.then(function (student) {
+                vm.student=student;
                 vm.student['unique_code'] = student.code;
             });
         }
@@ -41,12 +41,12 @@
             data['is_active'] = true;
             UserService.student = vm.student;
             if(student) {
-                console.log(student.user.id);
-                var student_id = student.user.id;
+                console.log(student.id);
+                var student_id = student.id;
                 UserService.api.update({'id':student_id}, data).$promise.then(function(success){
                     console.log("asdsasd");
                     vm.error_msg=null;
-                    $state.go('academic_detail',{"student":success.id});
+                    $state.go('academic_detail',{"student":success});
                     vm.submitInProgress = false;
                 }, function(error) {
                     vm.error_msg = "Something goes wrong, please try again.";
@@ -57,14 +57,15 @@
             else {
                 data['first_name'] = vm.student.first_name;
                 data['last_name'] = vm.student.last_name;
+                data['middle_name'] = vm.student.middle_name;
                 data['email'] = vm.student.email;
                 data['code'] = vm.student.code;
                 data['roll_no'] = vm.student.roll_no;
                 UserService.api.save(data).$promise.then(function(success){
                     vm.success_msg = "Your Personel detail is saved successfullly.";
                     vm.error_msg=null;
-                    $state.go('academic_detail',{"student":success.id});
-                    vm.submitInProgress = false;
+                    $state.go('academic_detail',{"student":success});
+                    vm.submitInProgress = false;	
                 }, function(error) {
                     console.log(error);
                     if(error.data.email)

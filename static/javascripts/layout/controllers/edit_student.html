@@ -35,9 +35,9 @@
 </form>
 <form name="createOrderForm" class="form-horizontal assessor-booking" role="form" ng-hide="showBookingFields" ng-disabled="submitInProgress">
     <span ng-hide="showBookingFields" ng-disabled="submitInProgress">
-	{% endverbatim %}
+        {% endverbatim %}
         {% include "modules/form_property_address.html" with formName="createOrderForm" formErrors="propertyAddressErrors" formModel="booking" propertyType="Property Address" %}
-	{% verbatim %}
+        {% verbatim %}
     </span>
 </form>
 <fieldset class="bordered-fieldset" ng-hide="showBookingFields">
@@ -48,9 +48,9 @@
                     Cancel
                 </button>
             </div>
-	    <div processing-spinner
+            <div processing-spinner
              ng-show="submitInProgress">
-	    </div>
+            </div>
             <div class="col-xs-6 right-button-container" ng-hide="showBookingFields">
                 <button type="submit"
                 class="button button-submit btn-form-control-aligned btn-block" ng-click="createOrder()" ng-disabled="submitInProgress || createOrderForm.$invalid">
@@ -108,7 +108,7 @@
                 Please accept the terms before submitting your booking.
             </p>
         </div>
-	</span>
+        </span>
     </fieldset>
 </form>
 
@@ -116,7 +116,7 @@
     <div class="row">
         <div class="col-xs-12 col-md-6 pull-right">
             <div class="col-xs-6 left-button-container">
-		        <input type="button" value="Back" ng-click="backToPropertyDatails()" class="button btn-form-control-aligned btn-block" ng-disabled="loading">
+                        <input type="button" value="Back" ng-click="backToPropertyDatails()" class="button btn-form-control-aligned btn-block" ng-disabled="loading">
                 </input>
             </div>
             <div class="col-xs-6 right-button-container">

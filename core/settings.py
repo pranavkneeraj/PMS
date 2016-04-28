@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'djcelery',
     'rest_framework',
     'compressor',
     'user',
@@ -125,6 +126,15 @@ REST_FRAMEWORK = {
 AUTH_USER_MODEL = 'user.User'
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+
+
+#celary config
+import djcelery
+djcelery.setup_loader()
+BROKER_URL = os.environ.get('BROKER_URL',
+                            'amqp://guest:guest@localhost:5672//')
+BROKER_POOL_LIMIT = 1
 
 # Allow all host headers
 ALLOWED_HOSTS = ['*']

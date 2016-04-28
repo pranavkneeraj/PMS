@@ -1,0 +1,62 @@
+<div class="alert alert-danger" ng-show="vm.campusDrives && vm.campusDrives.length==0">No Student Detail Available</div>
+<div class="container" id="middle" ng-show="vm.campusDrives.length>0">
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-2">
+            <div class="form-group has-feedback">
+                <input type="text"  placeholder="Search By CompnyName" uib-typeahead="campusDrive.company_name for campusDrive in vm.campusDrives | filter:$viewValue | limitTo:8" ng-model="vm.selectedCampusDrive" class="form-control" typeahead-show-hint=true typeahead-on-select="vm.campusDriveSelected($item, $model, $label, $event)">
+                    <i class="glyphicon glyphicon-search form-control-feedback"></i>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <button class="btn btn-primary" ng-click="vm.getEligibleStudents()">Get Eligible Students</button>
+        </div>
+    </div>
+<div class="row" ng-if="vm.students.length>0">
+    <div class="col-md-12">
+
+            <h4>All Eligible Student list</h4>
+            <div class="table-responsive">
+
+
+                <table id="studentListTable" class="table table-bordred table-striped">
+                    <thead>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Contact</th>
+                        <th>Course</th>
+                        <th>Batch</th>
+                        <th>Mark Student As Placed</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="student in vm.students.slice(((currentPage-1)*vm.itemsPerPage), ((currentPage)*vm.itemsPerPage)) | orderBy:vm.sort_by" id="{{student.id}}">
+                            <td>{{ student.student.first_name || "--"}}</td>
+                            <td>{{ student.student.last_name || "--"}}</td>
+                            <td>{{ student.student.email || "--"}}</td>
+                            <td>{{ student.student.contact || "--"}}</td>
+                            <td>{{student.academic_detail.ug_course}}</td>
+                            <td>{{student.academic_detail.ug_passout_year}}</td>
+                            <td>
+                                <button class="glyphicon glyphicon-ok btn btn-success btn-xs" ng-click="vm.markStudentAsPlaced(student.student)"></button>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+                <div class="clearfix"></div>
+                <uib-pagination total-items="vm.totalItems" items-per-page="vm.itemsPerPage" max-size="vm.maxSize" ng-model="currentPage"  boundary-links="true"></uib-pagination>
+               <!-- <ul class="pagination pull-right">
+               <!--      <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+               <!--      <li class="active"><a href="#">1</a></li>
+               <!--      <li><a href="#">2</a></li>
+               <!--      <li><a href="#">3</a></li>
+               <!--      <li><a href="#">4</a></li>
+               <!--      <li><a href="#">5</a></li>
+               <!--      <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+               <!--  </ul>
+
+            </div>
+
+        </div>
+    </div>
+</div>

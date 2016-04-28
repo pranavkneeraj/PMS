@@ -1,12 +1,18 @@
-       <div class="group btmspace-30">
-        <!-- Left Column -->
+<div ng-show="vm.showGlobalAlert && !vm.UserService.user.is_staff" class="global-alert">
+    <div class="h4 alert alert-danger"> You have not filled your academic detail. Please fill
+        <a ui-sref="academic_detail">here</a>
+        <span ng-click="vm.showGlobalAlert=false" class="glyphicon glyphicon-remove pull-right"></span>
+    </div>
+</div>
+<div class="group btmspace-30">
+    <!-- Left Column -->
         <div class="one_quarter first">
           <!-- ################################################################################################ -->
           <ul class="nospace">
-            <li class="btmspace-15"><a href="#"><em class="heading">Prospective Students</em> <img class="borderedbox" src="images/demo/220x95.gif" alt=""></a></li>
-            <li class="btmspace-15"><a href="#"><em class="heading">Current Students</em> <img class="borderedbox" src="images/demo/220x95.gif" alt=""></a></li>
-            <li class="btmspace-15"><a href="#"><em class="heading">International Students</em> <img class="borderedbox" src="images/demo/220x95.gif" alt=""></a></li>
-            <li><a href="#"><em class="heading">Alumni</em> <img class="borderedbox" src="images/demo/220x95.gif" alt=""></a></li>
+            <li class="btmspace-15"><a href="#"><em class="heading">Prospective Students</em> <img class="borderedbox" src="static/images/demo_pic.png" alt=""></a></li>
+            <li class="btmspace-15"><a href="#"><em class="heading">Current Students</em> <img class="borderedbox" src="static/images/demo_pic.png" alt=""></a></li>
+            <li class="btmspace-15"><a href="#"><em class="heading">International Students</em> <img class="borderedbox" src="static/images/demo_pic.png" alt=""></a></li>
+            <li><a href="#"><em class="heading">Alumni</em> <img class="borderedbox" src="static/images/demo_pic.png" alt=""></a></li>
           </ul>
           <!-- ################################################################################################ -->
         </div>
@@ -16,7 +22,7 @@
           <!-- ################################################################################################ -->
           <h2>Latest Notification &amp; Events</h2>
           <ul class="nospace listing">
-              <li class="" ng-repeat="notification in vm.notifications.slice(((currentPage-1)*vm.itemsPerPage), ((currentPage)*vm.itemsPerPage))">
+              <li style="color:black;background:light-gray" ng-repeat="notification in vm.notifications.slice(((currentPage-1)*vm.itemsPerPage), ((currentPage)*vm.itemsPerPage))">
                       {{ notification.description}}
               </li>
           </ul>

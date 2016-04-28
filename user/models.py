@@ -34,15 +34,24 @@ class User(AbstractEmailUser, BaseModel):
         max_length=500,
         blank = True
         )
-
-    contact = models.IntegerField(
+    batch_year = models.IntegerField(
+        blank=True,
+        null=True
+    )
+    contact = models.CharField(
         validators=[RegexValidator(
             regex='^[0-9]{10}$',
             message='Length has to be 10',
             code='nomatch')],
             null=True,
-            blank=True
-)
+            blank=True,
+            max_length=12,
+    )
+    placed_in = models.CharField(
+        default=None,
+        max_length=100,
+        null=True
+    )
 
 
 class UniqueRegistration(CreatedFlagModelMixin,

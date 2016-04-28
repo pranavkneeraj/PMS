@@ -1,0 +1,57 @@
+<form name="CriteriaForm" class="form-horizontal" role="form" ng-submit="CriteriaForm.$valid && vm.save_criteria()" novalidate>
+    <fieldset ng-disabled="vm.submitInProgress">
+
+        <div class="form-group required">
+            <label for="" class="col-sm-3 control-label">Throughout Percentage</label>
+            <div class="col-sm-9">
+                <input type="number" ng-pattern="/^[0-9]{1,2}(\.[0-9]{1,2})?$/" step="0.1" class="form-control" placeholder="Throughout Percentage" name="throughout_percentage" required ng-init="vm.Criteria.throughout_percentage=0" ng-model="vm.criteria.throughout_percentage">
+                <div ng-show="SpecialCriteriaForm.percentage.$error.pattern" class="text-danger">Please enter number between 00.00 to 100</div>
+                <div ng-show="CriteriaForm.$submitted || CriteriaForm.$touched">
+                    <div ng-show="CriteriaForm.throughout_percentage.$error.required" class="text-danger">Tell us the Throughout Percentage</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group required">
+            <label for="" class="col-sm-3 control-label">Number Of Gap Allowed</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Number Of Gap Allowed" name="no_of_gap" required ng-init="vm.criteria.no_of_gap=0" ng-model="vm.criteria.no_of_gap">
+                <div ng-show="CriteriaForm.$submitted || CriteriaForm.$touched">
+                    <div ng-show="CriteriaForm.no_of_gap.$error.required" class="text-danger">Tell us the Number Of Gap</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group required">
+            <label for="" class="col-sm-3 control-label">Gender</label>
+            <div class="col-sm-9">
+                <select class="form-control" required name="gender" ng-init="vm.criteria.gender='Any'" ng-model="vm.criteria.gender">
+
+                    <option value='Any'>Any</option>
+                    <option value='M'>Male</option>
+                    <option value='F'>Female</option>
+
+                </select>
+                <div ng-show="CriteriaForm.$submitted || CriteriaForm.$touched">
+                    <div ng-show="CriteriaForm.gender.$error.required" class="text-danger">Tell us your Gender</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group required">
+            <label for="" class="col-sm-3 control-label">Exprience</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Exprience" name="exprience" required ng-init="vm.criteria.exprience=0" ng-model="vm.criteria.exprience">
+                <div ng-show="CriteriaForm.$submitted || CriteriaForm.$touched">
+                    <div ng-show="CriteriaForm.exprience.$error.required" class="text-danger">Tell us the Exprience</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+                <button ng-if="vm.isEditForm" type="submit" class="btn btn-success btn-md">Update</button>
+                <button ng-if="!vm.isEditForm" type="submit" class="btn btn-success btn-md">Add</button>
+                <button type="reset" class="btn btn-default btn-md">Reset</button>
+            </div>
+        </div>
+    </fieldset>
+</form>

@@ -8,9 +8,11 @@ print("Hello..............")
 router = routers.DefaultRouter()  # pylint: disable=C0103
 router.register(r'detail', views.AcademicDetailViewSet)
 router.register(r'campusdrive', views.CampusDriveViewSet)
-router.register(r'pgsem', views.PGSemViewSet, base_name='academic-pgsem')
+#router.register(r'pgsem', views.PGSemViewSet, base_name='academic-pgsem')
 router.register(r'special_criteria', views.SpecialCriteriaViewSet)
-router.register(r'interested', views.InterestedViewSet)
+router.register(r'criteria', views.CriteriaViewSet)
+
+router.register(r'interested', views.InterestedViewSet, base_name="interested")
 
 urlpatterns = [
     url(r'', include(router.urls)),

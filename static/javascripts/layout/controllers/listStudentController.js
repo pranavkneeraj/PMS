@@ -24,15 +24,32 @@
         UserService.api.query().$promise.then(
             function (success) {
                 vm.students = success;
+                vm.filteredStudents = success;
                 vm.totalItems = success.length;
                 console.log("dasdsadasdsadsad",success.length);
-                $location.hash('content-area');
-                $anchorScroll();
+                $anchorScroll('content-area');
                 //console.log(angular.element(document).find('#bottom'))
             }, function (error) {
                 console.log("error",error);
             }
         );
+        vm.filterStudent = function() {
+            vm.filteredStudents=[];
+            for(var i=0;i<vm.students.length;i++) {
+                var match = true;
+                for(var j=0;j<vm.selectedStudent.length;j++) {
+                    if(vm.students[i].first_name.indexOf(vm.selectedStudent[j])<0){
+                        match = false;
+                        break;
+                    }
+                }
+                if(match)
+                    vm.filteredStudents.push(vm.students[i]);
+            }
+            if(i==0)
+                vm.filteredStudents=vm.students
+        };
+
         vm.editPersonalDetail = function (selectedStudent) {
             vm.selectedStudent = selectedStudent;
             console.log("student", selectedStudent)
@@ -103,16 +120,29 @@
         vm.update = function () {
         };
         vm.remove = function (selectedStudent) {
-            console.log(selectedStudent);
-            UserService.api.remove({'id':selectedStudent.id}).$promise.then(
-                function (success) {
-                    console.log("deleted");
-                    console.log(angular.element(document).find('#'+selectedStudent.id))
-                    angular.element(document).find('#'+selectedStudent.id).remove();
-                }, function (error) {
-                    console.log("error",error)
+            var modalInstance = $uibModal.open({
+                animation: $scope.animationsEnabled,
+                templateUrl: 'static/templates/common/modal_alert.html ',
+                controller:'alertModalController',
+                controllerAs:'vm',
+                resolve:{
+                    msg:function(){
+                        return "Do you want delete this student?";
+                    }
                 }
-            );
+            });
+
+            modalInstance.result.then(function(success){
+                UserService.api.remove({'id':selectedStudent.id}).$promise.then(
+                    function (success) {
+                        console.log("deleted");
+                        console.log(angular.element(document).find('#'+selectedStudent.id))
+                        angular.element(document).find('#'+selectedStudent.id).remove();
+                    }, function (error) {
+                        console.log("error",error)
+                    }
+                );
+            });
         };
     };
 

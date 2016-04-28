@@ -22,11 +22,23 @@
     function IndexController($scope, $location, $cookies, UserService, Authentication) {
 
         var vm = this;
+        vm.UserService = UserService;
+        console.log(vm.UserService)
         var user = $cookies.getObject('user');
+        vm.hideGlobalAlert = function() {
+            console.log("hide");
+            angular.element('.global-alert').html('');
+        };
+
         var activate = function () {
             if (user) {
                 UserService.user = user ;
                 UserService.isLogin = true;
+                UserService.academicDetailApi.get({'id':user.id}).$promise.then(function (success){
+                    console.log(success)
+                }, function (error) {
+                    vm.showGlobalAlert = true;
+                });
 //                $location.path('/');
             }
         };
@@ -40,23 +52,26 @@
 
         var currIndex = 0;
         slides.push({
-
-            image: 'static/images/j.jpg',
-
+            image: 'static/images/JICA-1.jpg',
             text: ['Nice image','Awesome photograph','That is so cool','I love that'][slides.length % 4],
-
             id: currIndex++
-
         });
         slides.push({
-
             image: 'static/images/JICA-2.jpg',
-
             text: ['Nice image','Awesome photograph','That is so cool','I love that'][slides.length % 4],
-
             id: currIndex++
-
         });
+        slides.push({
+            image: 'static/images/JICA-3.jpg',
+            text: ['Nice image','Awesome photograph','That is so cool','I love that'][slides.length % 4],
+            id: currIndex++
+        });
+        slides.push({
+            image: 'static/images/JICA-4.jpg',
+            text: ['Nice image','Awesome photograph','That is so cool','I love that'][slides.length % 4],
+            id: currIndex++
+        });
+
         activate();
         vm.UserService = UserService;
         $scope.isLogin = UserService.isLogin;
@@ -99,5 +114,6 @@
             $uibModalInstance.dismiss();
         };
     }
+
 
 })();

@@ -76,15 +76,8 @@ class UserBesicDataSerializer(serializers.ModelSerializer):
     """
     class Meta:
         model = User
-        fields = ('roll_no',
+        fields = ('id','roll_no',
                   'first_name', 'middle_name', 'last_name', 'email', 'is_active')
-    def validate_email(self, value):
-        try:
-            User.objects.get(email=value)
-            return False
-        except:
-            return value
-
 class UniqueRegistrationSerializer(serializers.ModelSerializer):
     """
     Serializer for User Model

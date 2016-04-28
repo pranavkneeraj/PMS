@@ -3,6 +3,8 @@ from datetime import datetime
 from datetime import timedelta
 from django.core.mail import get_connection, EmailMultiAlternatives
 from django.conf import settings
+from core.celery import app
+@app.task
 def send_mail(email_list):
     email_subject = "Complete Your Registration"
     message_list = []

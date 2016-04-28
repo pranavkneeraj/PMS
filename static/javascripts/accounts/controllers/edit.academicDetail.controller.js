@@ -15,23 +15,29 @@
   /**
    * @namespace
    */
+
     function EditAcademicDetailByUserController($location, $scope, $cookies, $anchorScroll, UserService) {
         var vm = this;
         vm.alert_page = "static/templates/common/alert.html";
         vm.form_page = "static/templates/common/academic_detail_form.html";
-        $location.hash('bottom');
+        $location.hash('bottom')
         $anchorScroll();
         vm.isEditForm = true;
         vm.academic_detail_not_found = true;
         UserService.academicDetailApi.get({'id':UserService.user.id}).$promise.then(function (success) {
             vm.studentAcademicDetail = success;
+            vm.studentAcademicDetail.ssc_percentage = parseFloat(vm.studentAcademicDetail.ssc_percentage);
+            vm.studentAcademicDetail.hsc_percentage = parseFloat(vm.studentAcademicDetail.hsc_percentage);
+            vm.studentAcademicDetail.ug_percentage = parseFloat(vm.studentAcademicDetail.ug_percentage);
+            vm.studentAcademicDetail.pg_percentage = parseFloat(vm.studentAcademicDetail.pg_percentage);
+
             vm.academic_detail_not_found = false;
             console.log(success);
         }, function(error) {
             console.log(error);
             if(error.status == 404) {
                 vm.studentAcademicDetail = {};
-                vm.error_msg = "Your have  no detail saved, Please enter";
+                vm.error_msg = "Your have no detail saved, Please enter";
             }
             else
                 vm.error_msg = "Something goes wrong in loading your detail.";
@@ -153,13 +159,13 @@
                     data['ug_marks'] = $scope.StudentAcademicDetail.ug_marks.$viewValue;
                 if($scope.StudentAcademicDetail.ug_percentage.$dirty)
                     data['ug_percentage'] = $scope.StudentAcademicDetail.ug_percentage.$viewValue;
-                if($scope.StudentAcademicDetail.ug_passout_year.$dirty)
+                if($scope.StudentAcademicDetail.ug_passout_year || $scope.StudentAcademicDetail.ug_passout_year.$dirty)
                     data['ug_passout_year'] = $scope.StudentAcademicDetail.ug_passout_year.$viewValue;
                 if($scope.StudentAcademicDetail.ug_course.$dirty)
                     data['ug_course'] = $scope.StudentAcademicDetail.ug_course.$viewValue;
-                if($scope.StudentAcademicDetail.exprience.$dirty)
-                    data['exprience'] = $scope.StudentAcademicDetail.exprience.$viewValue;
-                if($scope.StudentAcademicDetail.current_pg_sem.$dirty)
+                if($scope.StudentAcademicDetail.experience.$dirty)
+                    data['exprience'] = $scope.StudentAcademicDetail.experience.$viewValue;
+                if($scope.StudentAcademicDetail.current_pg_sem || $scope.StudentAcademicDetail.current_pg_sem.$dirty)
                     data['current_pg_sem'] = $scope.StudentAcademicDetail.current_pg_sem.$viewValue;
 
                 UserService.academicDetailApi.update({'id':vm.studentAcademicDetail.student}, data).$promise.then(function (success) {
